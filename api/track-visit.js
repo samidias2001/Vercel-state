@@ -1,8 +1,6 @@
 import { put, get } from '@vercel/blob';
 
-export const config = {
-  runtime: 'edge',
-};
+export const config = { runtime: 'edge' };
 
 export default async function handler(request) {
   if (request.method === 'OPTIONS') {
@@ -75,4 +73,3 @@ export default async function handler(request) {
     });
   }
 }
-
