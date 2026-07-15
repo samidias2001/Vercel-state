@@ -1046,7 +1046,7 @@ function detectDevice(ua){
 
 async function trackVisit(){
   try{
-    await fetch(API_BASE + '/api/track-visit',{
+    const res = await fetch(API_BASE + '/api/track-visit',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1054,7 +1054,11 @@ async function trackVisit(){
         ua: navigator.userAgent
       })
     });
-  }catch(e){ console.log('Track visit:', e); }
+    const data = await res.json();
+    console.log('Visite enregistrée:', data);
+  }catch(e){ 
+    console.error('ERREUR track visit:', e); 
+  }
 }
 
 // Enregistrer la visite au chargement (une seule fois par session)
