@@ -1,34 +1,22 @@
 import { put, get } from '@vercel/blob';
 
-export const config = { runtime: 'edge' };
-
-export default async function handler(request) {
+export default async function handler(request, response) {
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+    return response.status(204).end();
   }
 
   if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return response.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const data = await request.json();
-    const ip = request.headers.get('x-forwarded-for') || 
-               request.headers.get('x-real-ip') || 
+    const data = request.body;
+    const ip = request.headers['x-forwarded-for'] || 
+               request.headers['x-real-ip'] || 
                data.ip || 'inconnue';
     
     const visit = {
-      id: crypto.randomUUID().slice(0, 8).toUpperCase(),
+      id: Math.random().toString(36).substring(2, 10).toUpperCase(),
       ip: ip.split(',')[0].trim(),
       device: data.device || 'inconnu',
       ua: data.ua || 'inconnu',
@@ -56,20 +44,8 @@ export default async function handler(request) {
       addRandomSuffix: false,
     });
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return response.status(200).json({ success: true });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return response.status(500).json({ error: err.message });
   }
 }
