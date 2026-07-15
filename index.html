@@ -54,6 +54,123 @@
     "reviewCount": "5"
   }
 }
+
+// ===== STATS VISITEURS =====
+const API_BASE = window.location.origin;
+
+function detectDevice(ua){
+  if(!ua) return 'Inconnu';
+  if(/Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(ua)) return 'Mobile';
+  if(/Windows/i.test(ua)) return 'Windows';
+  if(/Mac/i.test(ua)) return 'Mac';
+  if(/Linux/i.test(ua)) return 'Linux';
+  return 'Autre';
+}
+
+async function trackVisit(){
+  try{
+    await fetch(API_BASE + '/api/track-visit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        device: detectDevice(navigator.userAgent),
+        ua: navigator.userAgent
+      })
+    });
+  }catch(e){ console.log('Track visit:', e); }
+}
+
+// Enregistrer la visite au chargement (une seule fois par session)
+if(!sessionStorage.getItem('visitTracked')){
+  trackVisit();
+  sessionStorage.setItem('visitTracked','1');
+}
+
+async function openStats(){
+  const modal = document.getElementById('statsModal');
+  const content = document.getElementById('statsContent');
+  modal.classList.add('active');
+  content.innerHTML = '<p class="stats-empty fr">Chargement...</p><p class="stats-empty ar">جاري التحميل...</p>';
+
+  try{
+    const res = await fetch(API_BASE + '/api/get-visits');
+    const data = await res.json();
+    const visits = data.visits || [];
+
+    if(visits.length === 0){
+      content.innerHTML = '<p class="stats-empty fr">Aucune visite enregistrée.</p><p class="stats-empty ar">لا توجد زيارات مسجلة.</p>';
+      return;
+    }
+
+    let rows = visits.map(v => `
+      <tr>
+        <td>${v.id || '-'}</td>
+        <td>${v.ip || '-'}</td>
+        <td>${v.device || '-'}</td>
+        <td>${v.date || '-'} ${v.time || ''}</td>
+      </tr>
+    `).join('');
+
+    content.innerHTML = `
+      <p style="font-size:.85rem;color:var(--ink-muted);margin-bottom:12px;">
+        <span class="fr">Total : ${visits.length} visites</span>
+        <span class="ar">المجموع: ${visits.length} زيارة</span>
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>IP</th>
+              <th class="fr">Appareil</th><th class="ar">الجهاز</th>
+              <th class="fr">Date/Heure</th><th class="ar">التاريخ/الوقت</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+    window._statsData = visits;
+  }catch(e){
+    content.innerHTML = '<p class="stats-empty fr">Erreur de chargement.</p><p class="stats-empty ar">خطأ في التحميل.</p>';
+  }
+}
+
+function closeStats(){
+  document.getElementById('statsModal').classList.remove('active');
+}
+
+function downloadStats(){
+  const visits = window._statsData || [];
+  if(visits.length === 0) return;
+
+  const now = new Date().toLocaleString('fr-FR');
+  let txt = `=== STATISTIQUES VISITES - Dr Ziane Khodja ===\n`;
+  txt += `Exporté le: ${now}\n`;
+  txt += `Total: ${visits.length} visites\n`;
+  txt += `=============================================\n\n`;
+  txt += `ID\t\tIP\t\tAppareil\tDate/Heure\n`;
+  txt += `-------------------------------------------------\n`;
+
+  visits.forEach(v => {
+    txt += `${v.id || '-'}\t${v.ip || '-'}\t${v.device || '-'}\t${v.date || '-'} ${v.time || ''}\n`;
+  });
+
+  const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `stats-visites-${new Date().toISOString().slice(0,10)}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Fermer le modal en cliquant sur l'overlay
+document.getElementById('statsModal').addEventListener('click', function(e){
+  if(e.target === this) closeStats();
+});
 </script>
 <script type="application/ld+json">
 {
@@ -92,6 +209,123 @@
     }
   ]
 }
+
+// ===== STATS VISITEURS =====
+const API_BASE = window.location.origin;
+
+function detectDevice(ua){
+  if(!ua) return 'Inconnu';
+  if(/Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(ua)) return 'Mobile';
+  if(/Windows/i.test(ua)) return 'Windows';
+  if(/Mac/i.test(ua)) return 'Mac';
+  if(/Linux/i.test(ua)) return 'Linux';
+  return 'Autre';
+}
+
+async function trackVisit(){
+  try{
+    await fetch(API_BASE + '/api/track-visit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        device: detectDevice(navigator.userAgent),
+        ua: navigator.userAgent
+      })
+    });
+  }catch(e){ console.log('Track visit:', e); }
+}
+
+// Enregistrer la visite au chargement (une seule fois par session)
+if(!sessionStorage.getItem('visitTracked')){
+  trackVisit();
+  sessionStorage.setItem('visitTracked','1');
+}
+
+async function openStats(){
+  const modal = document.getElementById('statsModal');
+  const content = document.getElementById('statsContent');
+  modal.classList.add('active');
+  content.innerHTML = '<p class="stats-empty fr">Chargement...</p><p class="stats-empty ar">جاري التحميل...</p>';
+
+  try{
+    const res = await fetch(API_BASE + '/api/get-visits');
+    const data = await res.json();
+    const visits = data.visits || [];
+
+    if(visits.length === 0){
+      content.innerHTML = '<p class="stats-empty fr">Aucune visite enregistrée.</p><p class="stats-empty ar">لا توجد زيارات مسجلة.</p>';
+      return;
+    }
+
+    let rows = visits.map(v => `
+      <tr>
+        <td>${v.id || '-'}</td>
+        <td>${v.ip || '-'}</td>
+        <td>${v.device || '-'}</td>
+        <td>${v.date || '-'} ${v.time || ''}</td>
+      </tr>
+    `).join('');
+
+    content.innerHTML = `
+      <p style="font-size:.85rem;color:var(--ink-muted);margin-bottom:12px;">
+        <span class="fr">Total : ${visits.length} visites</span>
+        <span class="ar">المجموع: ${visits.length} زيارة</span>
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>IP</th>
+              <th class="fr">Appareil</th><th class="ar">الجهاز</th>
+              <th class="fr">Date/Heure</th><th class="ar">التاريخ/الوقت</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+    window._statsData = visits;
+  }catch(e){
+    content.innerHTML = '<p class="stats-empty fr">Erreur de chargement.</p><p class="stats-empty ar">خطأ في التحميل.</p>';
+  }
+}
+
+function closeStats(){
+  document.getElementById('statsModal').classList.remove('active');
+}
+
+function downloadStats(){
+  const visits = window._statsData || [];
+  if(visits.length === 0) return;
+
+  const now = new Date().toLocaleString('fr-FR');
+  let txt = `=== STATISTIQUES VISITES - Dr Ziane Khodja ===\n`;
+  txt += `Exporté le: ${now}\n`;
+  txt += `Total: ${visits.length} visites\n`;
+  txt += `=============================================\n\n`;
+  txt += `ID\t\tIP\t\tAppareil\tDate/Heure\n`;
+  txt += `-------------------------------------------------\n`;
+
+  visits.forEach(v => {
+    txt += `${v.id || '-'}\t${v.ip || '-'}\t${v.device || '-'}\t${v.date || '-'} ${v.time || ''}\n`;
+  });
+
+  const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `stats-visites-${new Date().toISOString().slice(0,10)}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Fermer le modal en cliquant sur l'overlay
+document.getElementById('statsModal').addEventListener('click', function(e){
+  if(e.target === this) closeStats();
+});
 </script>
 <style>
 :root{
@@ -305,8 +539,11 @@ body.lang-ar .stats-card h2{font-family:'Markazi Text',serif;}
 .stats-table tr:hover td{background:#f8fafc;}
 .stats-empty{text-align:center;color:var(--ink-muted);padding:40px 0;font-style:italic;}
 .stats-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
-#secret-logo{cursor:pointer;transition:transform .2s;}
-#secret-logo:hover{transform:scale(1.05);}
+
+/* ===== BOUTON STATS VISIBLE ===== */
+.stats-btn{position:fixed;bottom:24px;right:24px;z-index:99;background:var(--ink);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;border:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;}
+.stats-btn:hover{transform:scale(1.1);background:var(--primary);}
+body.lang-ar .stats-btn{right:auto;left:24px;}
 </style>
 </head>
 <body class="lang-fr">
@@ -314,7 +551,7 @@ body.lang-ar .stats-card h2{font-family:'Markazi Text',serif;}
 <header id="main-header">
   <div class="nav">
     <a href="index.html" class="brand">
-      <img src="1000040675.jpg" alt="Dr Ziane Khodja" id="secret-logo" title="Statistiques">
+      <img src="1000040675.jpg" alt="Dr Ziane Khodja">
       <div class="brand-text">
         <span>Dr. Ziane Khodja</span>
         <small class="fr">Chirurgienne pédiatre</small>
@@ -755,29 +992,6 @@ body.lang-ar .stats-card h2{font-family:'Markazi Text',serif;}
 
 </main>
 
-<!-- STATS MODAL -->
-<div class="stats-modal-overlay" id="statsModal">
-  <div class="stats-card">
-    <button class="stats-close" onclick="closeStats()">&times;</button>
-    <h2 class="fr">📊 Statistiques des visites</h2>
-    <h2 class="ar">📊 إحصائيات الزيارات</h2>
-    <div id="statsContent">
-      <p class="stats-empty fr">Chargement...</p>
-      <p class="stats-empty ar">جاري التحميل...</p>
-    </div>
-    <div class="stats-actions">
-      <button class="btn" onclick="downloadStats()">
-        <span class="fr">⬇ Télécharger (.txt)</span>
-        <span class="ar">⬇ تحميل (.txt)</span>
-      </button>
-      <button class="btn btn-outline" onclick="closeStats()">
-        <span class="fr">Fermer</span>
-        <span class="ar">إغلاق</span>
-      </button>
-    </div>
-  </div>
-</div>
-
 <footer>
   <p class="fr">© Cabinet Médical de Chirurgie Pédiatrique — Dr Ziane Khodja Djamila · Ouled Moussa, Boumerdès</p>
   <p class="ar">© عيادة جراحة الأطفال — د. زيان خوجة جميلة · أولاد موسى، بومرداس</p>
@@ -814,7 +1028,7 @@ window.addEventListener('scroll',()=>{
   else{header.classList.remove('scrolled');}
 });
 
-// ===== STATS SECRET =====
+// ===== STATS VISITEURS =====
 const API_BASE = window.location.origin;
 
 function detectDevice(ua){
@@ -845,28 +1059,22 @@ if(!sessionStorage.getItem('visitTracked')){
   sessionStorage.setItem('visitTracked','1');
 }
 
-// Ouvrir le modal au clic sur le logo
-document.getElementById('secret-logo').addEventListener('click', function(e){
-  e.preventDefault();
-  openStats();
-});
-
 async function openStats(){
   const modal = document.getElementById('statsModal');
   const content = document.getElementById('statsContent');
   modal.classList.add('active');
   content.innerHTML = '<p class="stats-empty fr">Chargement...</p><p class="stats-empty ar">جاري التحميل...</p>';
-  
+
   try{
     const res = await fetch(API_BASE + '/api/get-visits');
     const data = await res.json();
     const visits = data.visits || [];
-    
+
     if(visits.length === 0){
       content.innerHTML = '<p class="stats-empty fr">Aucune visite enregistrée.</p><p class="stats-empty ar">لا توجد زيارات مسجلة.</p>';
       return;
     }
-    
+
     let rows = visits.map(v => `
       <tr>
         <td>${v.id || '-'}</td>
@@ -875,7 +1083,7 @@ async function openStats(){
         <td>${v.date || '-'} ${v.time || ''}</td>
       </tr>
     `).join('');
-    
+
     content.innerHTML = `
       <p style="font-size:.85rem;color:var(--ink-muted);margin-bottom:12px;">
         <span class="fr">Total : ${visits.length} visites</span>
@@ -908,7 +1116,7 @@ function closeStats(){
 function downloadStats(){
   const visits = window._statsData || [];
   if(visits.length === 0) return;
-  
+
   const now = new Date().toLocaleString('fr-FR');
   let txt = `=== STATISTIQUES VISITES - Dr Ziane Khodja ===\n`;
   txt += `Exporté le: ${now}\n`;
@@ -916,11 +1124,11 @@ function downloadStats(){
   txt += `=============================================\n\n`;
   txt += `ID\t\tIP\t\tAppareil\tDate/Heure\n`;
   txt += `-------------------------------------------------\n`;
-  
+
   visits.forEach(v => {
     txt += `${v.id || '-'}\t${v.ip || '-'}\t${v.device || '-'}\t${v.date || '-'} ${v.time || ''}\n`;
   });
-  
+
   const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -937,5 +1145,33 @@ document.getElementById('statsModal').addEventListener('click', function(e){
   if(e.target === this) closeStats();
 });
 </script>
+
+<!-- BOUTON STATS VISIBLE -->
+<button class="stats-btn" onclick="openStats()" title="Statistiques des visites">
+  📊
+</button>
+
+<!-- STATS MODAL -->
+<div class="stats-modal-overlay" id="statsModal">
+  <div class="stats-card">
+    <button class="stats-close" onclick="closeStats()">&times;</button>
+    <h2 class="fr">📊 Statistiques des visites</h2>
+    <h2 class="ar">📊 إحصائيات الزيارات</h2>
+    <div id="statsContent">
+      <p class="stats-empty fr">Chargement...</p>
+      <p class="stats-empty ar">جاري التحميل...</p>
+    </div>
+    <div class="stats-actions">
+      <button class="btn" onclick="downloadStats()">
+        <span class="fr">⬇ Télécharger (.txt)</span>
+        <span class="ar">⬇ تحميل (.txt)</span>
+      </button>
+      <button class="btn btn-outline" onclick="closeStats()">
+        <span class="fr">Fermer</span>
+        <span class="ar">إغلاق</span>
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
