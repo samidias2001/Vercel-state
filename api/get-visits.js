@@ -1,17 +1,8 @@
 import { get } from '@vercel/blob';
 
-export const config = { runtime: 'edge' };
-
-export default async function handler(request) {
+export default async function handler(request, response) {
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+    return response.status(204).end();
   }
 
   try {
@@ -26,20 +17,8 @@ export default async function handler(request) {
       visits = [];
     }
 
-    return new Response(JSON.stringify({ visits }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return response.status(200).json({ visits });
   } catch (err) {
-    return new Response(JSON.stringify({ visits: [] }), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return response.status(200).json({ visits: [] });
   }
 }
