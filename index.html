@@ -1858,16 +1858,37 @@ async function trackVisit() {
   if (!STAT_WEBAPP_URL || STAT_WEBAPP_URL.includes('COLLE_ICI')) return;
   try {
     let ip = '', locationStr = '', isp = '';
+
+    // Service principal : geojs.io (CORS fiable, pas de clé requise)
     try {
-      const geoRes = await fetch('https://ipapi.co/json/');
+      const geoRes = await fetch('https://get.geojs.io/v1/ip/geo.json');
       const geoData = await geoRes.json();
       ip = geoData.ip || '';
       const ville = geoData.city || '';
       const region = geoData.region || '';
-      const pays = geoData.country_name || '';
+      const pays = geoData.country || '';
       locationStr = [ville, region, pays].filter(Boolean).join(', ');
-      isp = geoData.org || '';
-    } catch (err) { ip = 'inconnue'; }
+      isp = geoData.organization_name || geoData.organization || '';
+    } catch (err1) {
+      // Service de secours : ipapi.co
+      try {
+        const geoRes2 = await fetch('https://ipapi.co/json/');
+        const geoData2 = await geoRes2.json();
+        ip = geoData2.ip || '';
+        const ville2 = geoData2.city || '';
+        const region2 = geoData2.region || '';
+        const pays2 = geoData2.country_name || '';
+        locationStr = [ville2, region2, pays2].filter(Boolean).join(', ');
+        isp = geoData2.org || '';
+      } catch (err2) {
+        // Dernier recours : juste l'IP, sans localisation
+        try {
+          const ipRes = await fetch('https://api.ipify.org?format=json');
+          const ipData = await ipRes.json();
+          ip = ipData.ip || 'inconnue';
+        } catch (err3) { ip = 'inconnue'; }
+      }
+    }
 
     const payload = {
       visitorId: getVisitorId(),
