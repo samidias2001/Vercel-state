@@ -1853,22 +1853,30 @@ function detectDevice() {
 }
 
 // --- Enregistrement de la visite (silencieux, ne bloque jamais la page) ---
+// Localisation approximative + opérateur déduits de l'IP (aucune permission demandée au visiteur)
 async function trackVisit() {
   if (!STAT_WEBAPP_URL || STAT_WEBAPP_URL.includes('COLLE_ICI')) return;
   try {
-    let ip = '';
+    let ip = '', locationStr = '', isp = '';
     try {
-      const ipRes = await fetch('https://api.ipify.org?format=json');
-      const ipData = await ipRes.json();
-      ip = ipData.ip || '';
+      const geoRes = await fetch('https://ipapi.co/json/');
+      const geoData = await geoRes.json();
+      ip = geoData.ip || '';
+      const ville = geoData.city || '';
+      const region = geoData.region || '';
+      const pays = geoData.country_name || '';
+      locationStr = [ville, region, pays].filter(Boolean).join(', ');
+      isp = geoData.org || '';
     } catch (err) { ip = 'inconnue'; }
 
     const payload = {
       visitorId: getVisitorId(),
       ip: ip,
+      location: locationStr,
+      isp: isp,
       device: detectDevice(),
       userAgent: navigator.userAgent,
-      page: location.pathname
+      page: window.location.pathname
     };
 
     // Content-Type text/plain pour éviter le preflight CORS avec Apps Script
@@ -1933,6 +1941,8 @@ async function loadStats() {
         <td>${escapeHtml(v.visitorId)}</td>
         <td>${escapeHtml(v.ip)}</td>
         <td><span class="stat-badge ${v.device === 'Mobile' ? 'mobile' : 'pc'}">${escapeHtml(v.device)}</span></td>
+        <td>${escapeHtml(v.location || '—')}</td>
+        <td>${escapeHtml(v.isp || '—')}</td>
         <td>${escapeHtml(v.page || '/')}</td>
       </tr>
     `).join('');
@@ -1945,6 +1955,8 @@ async function loadStats() {
             <th>ID visiteur</th>
             <th>IP</th>
             <th>Appareil</th>
+            <th>Localisation</th>
+            <th>Opérateur</th>
             <th>Page</th>
           </tr>
         </thead>
