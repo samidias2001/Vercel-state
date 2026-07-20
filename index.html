@@ -828,6 +828,37 @@ section { padding: 100px 0; }
 
 .service-card h3 { font-size: 1.3rem; margin: 0 0 .5em; color: var(--blue-dark); }
 .service-card p { font-size: .95rem; margin: 0; color: var(--ink-soft); line-height: 1.6; }
+.service-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--blue-main);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;
+}
+.service-more::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--blue-main), var(--pink-main));
+  transform: scaleX(.35);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.service-more i { font-size: .75rem; transition: transform .3s ease; }
+.service-card:hover .service-more::after { transform: scaleX(1); }
+.service-card:hover .service-more { color: var(--pink-main); }
+.service-card:hover .service-more i { transform: translateX(4px); }
+body.lang-ar .service-more { font-family: 'Markazi Text', serif; font-size: 1rem; text-transform: none; letter-spacing: 0; }
+body.lang-ar .service-more i { transform: scaleX(-1); }
+body.lang-ar .service-card:hover .service-more i { transform: scaleX(-1) translateX(4px); }
 
 .cat-badge {
   display: inline-block;
@@ -1405,6 +1436,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Hernie inguinale</h3><h3 class="ar">الفتق الإربي</h3>
           <p class="fr">Protrusion intestinale à travers la paroi abdominale. Traitement chirurgical de précision indispensable.</p>
           <p class="ar">بروز الأمعاء عبر جدار البطن. العلاج الجراحي الدقيق ضروري.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="circoncision.html" class="service-card">
@@ -1413,6 +1445,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Circoncision</h3><h3 class="ar">الختان الطّبي</h3>
           <p class="fr">Ablation chirurgicale dans des conditions d'asepsie absolue. Consultation préalable obligatoire.</p>
           <p class="ar">ختان في ظروف تعقيم طبية مطلقة. استشارة فحص مسبقة إلزامية لضمان السلامة.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="cryptorchidie.html" class="service-card">
@@ -1421,6 +1454,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Testicule non descendu</h3><h3 class="ar">الخصية الهاجرة</h3>
           <p class="fr">Absence du testicule dans le scrotum. Un dépistage et une intervention idéals avant l'âge de 18 mois.</p>
           <p class="ar">غياب الخصية في الصفن. الكشف والتدخل المثاليان يكونان قبل سن 18 شهرًا.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="hypospadias.html" class="service-card">
@@ -1429,6 +1463,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Hypospadias</h3><h3 class="ar">تشوه الإحليل (المبال التحتاني)</h3>
           <p class="fr">Malformation congénitale de l'urètre. Prise en charge chirurgicale recommandée entre 6 et 18 mois.</p>
           <p class="ar">تشوه خلقي في مجرى البول. ينصح بالعلاج الجراحي بين 6 و 18 شهرًا.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="appendicite.html" class="service-card">
@@ -1437,6 +1472,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Appendicite aiguë</h3><h3 class="ar">التهاب الزائدة الدودية</h3>
           <p class="fr">Urgence chirurgicale. Risque de péritonite rapide chez l'enfant. Diagnostic et prise en charge immédiats.</p>
           <p class="ar">حالة استعجال قصوى. خطر الانفجار سريع عند الأطفال. تشخيص وتكفل فوري.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="brulures.html" class="service-card">
@@ -1445,6 +1481,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Brûlures pédiatriques</h3><h3 class="ar">حروق الأطفال</h3>
           <p class="fr">Soins spécialisés et pansements adaptés pour éviter les cicatrices contraignantes et soulager la douleur.</p>
           <p class="ar">عناية متخصصة وضمادات ملائمة لتفادي الآثار الدائمة وتخفيف الألم بسرعة.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="malformations-congenitales.html" class="service-card">
@@ -1453,6 +1490,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Malformations congénitales</h3><h3 class="ar">التشوهات الخلقية</h3>
           <p class="fr">Dépistage, orientation et suivi rigoureux des anomalies de développement observées dès la naissance.</p>
           <p class="ar">كشف، توجيه ومتابعة دقيقة لاختلالات النمو الملاحظة منذ الولادة.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="hydrocele-kyste.html" class="service-card">
@@ -1461,6 +1499,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Hydrocèle & Kyste</h3><h3 class="ar">الاستسقاء والكيس</h3>
           <p class="fr">Épanchement liquidien bénin. Surveillance active puis intervention douce en cas de persistance.</p>
           <p class="ar">تجمع سائل حميد. مراقبة مستمرة ثم تدخل لطيف في حال استمرار الحالة.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="urgences-chirurgicales.html" class="service-card">
@@ -1469,6 +1508,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Urgences & Traumatismes</h3><h3 class="ar">استعجالات ورضوض</h3>
           <p class="fr">Prise en charge rapide des traumatismes, occlusions, douleurs abdominales aiguës et accidents domestiques.</p>
           <p class="ar">تكفل سريع بالصدمات، انسداد الأمعاء، آلام البطن الحادة وحوادث المنزل.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="orthopedie-pediatrique.html" class="service-card">
@@ -1477,6 +1517,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Orthopédie pédiatrique</h3><h3 class="ar">تقويم العظام للأطفال</h3>
           <p class="fr">Suivi des fractures, entorses et déformations en respectant parfaitement les cartilages de croissance.</p>
           <p class="ar">متابعة الكسور، الالتواءات والتشوهات مع احترام تام لغضاريف النمو عند الطفل.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <a href="petite-chirurgie.html" class="service-card">
@@ -1485,6 +1526,7 @@ footer p { font-size: .9rem; margin: 0; color: rgba(255, 255, 255, 0.5); }
           <h3 class="fr">Petite chirurgie dermatologique</h3><h3 class="ar">الجراحة الصغرى الجلدية</h3>
           <p class="fr">Ablation de kystes, lipomes, verrues, soins de panaris, sutures esthétiques et retrait de fils.</p>
           <p class="ar">استئصال الأكياس والورم الشحمي، علاج الخراج، خياطة تجميلية ونزع الخيوط.</p>
+        <span class="service-more fr">En savoir plus <i class="fa-solid fa-arrow-right"></i></span><span class="service-more ar">اقرأ المزيد <i class="fa-solid fa-arrow-right"></i></span>
         </a>
       </div>
     </div>
