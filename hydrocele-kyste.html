@@ -64,6 +64,20 @@ section{padding:48px 0;}
 .cta-box h2{color:var(--white);}.cta-box p{color:#E0ECF8;}
 footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);background:var(--white);}
 footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
+
+/* FAQ Styles */
+.faq-section h2{font-family:'Fraunces',serif;color:var(--ink);text-align:center;margin-bottom:32px;font-size:clamp(1.4rem,3vw,1.8rem);}
+body.lang-ar .faq-section h2{font-family:'Markazi Text',serif;}
+.faq-item{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:16px;overflow:hidden;}
+.faq-btn{width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);gap:16px;}
+.faq-btn:hover{background:var(--accent-blue-light);}
+.faq-chevron{transition:transform .3s;color:var(--accent-blue);font-size:1.2rem;flex-shrink:0;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 24px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:20px;margin:0;}
+.faq-content strong{color:var(--ink);}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1.05rem;}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
@@ -380,6 +394,123 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="reveal faq-section">
+    <div class="wrap">
+      <h2 class="fr">❓ Questions fréquentes des parents</h2>
+      <h2 class="ar">❓ الأسئلة الشائعة من الأهالي</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">👶 Le scrotum de mon bébé est gonflé depuis la naissance — est-ce normal ?</span>
+          <span class="ar">👶 صفن طفلي منتفخ منذ الولادة — هل هذا طبيعي؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, c'est très fréquent. Chez les nouveau-nés, l'<strong>hydrocèle non communicante</strong> est présente dans 1 à 2 % des cas et est souvent remarquée dès les premiers jours de vie. Le gonflement est généralement <strong>painless, doux et translucide</strong> (la lumière passe à travers). Dans 80 à 90 % des cas, ce gonflement disparaît <strong>spontanément avant l'âge de 2 ans</strong> sans aucun traitement. Il suffit de surveiller l'évolution lors des consultations pédiatriques de routine. Si le gonflement persiste au-delà de 2 ans, augmente de taille, ou devient dur et douloureux, une consultation spécialisée est nécessaire.</p>
+          <p class="ar">نعم، هذا شائع جدًا. عند المواليد الجدد، <strong>الاستسقاء غير التواصلي</strong> موجود في 1 إلى 2% من الحالات وغالبًا ما يُلاحظ من الأيام الأولى من الحياة. التورم عادةً <strong>غير مؤلم، ناعم وشفاف</strong> (الضوء يمر خلاله). في 80 إلى 90% من الحالات، يختفي هذا التورم <strong>تلقائيًا قبل سن 2 سنوات</strong> بدون أي علاج. يكفي مراقبة التطور أثناء الاستشارات الطبية الروتينية للأطفال. إذا استمر التورم بعد 2 سنة، أو ازداد حجمًا، أو أصبح صلبًا ومؤلمًا، فإن استشارة متخصصة ضرورية.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔍 Comment différencier une hydrocèle d'une hernie inguinale ?</span>
+          <span class="ar">🔍 كيف نميز بين الاستسقاء والفتق الإربي؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La distinction est essentielle car la hernie peut être dangereuse. Voici les clés : <strong>À la palpation</strong>, l'hydrocèle est une masse <strong>molle, fluctuante et indolore</strong> qui contient du liquide ; la hernie est une masse plus <strong>dure, parfois réductible</strong>, qui contient de l'intestin. <strong>À la transillumination</strong> (lampe de poche dans le noir), l'hydrocèle <strong>devient rougeoyante</strong> car le liquide laisse passer la lumière ; la hernie reste opaque. <strong>En position couchée</strong>, l'hydrocèle communicante diminue ; la hernie peut aussi diminuer mais réapparaît à la pression abdominale. <strong>En cas de doute</strong>, une échographie scrotale permet de trancher définitivement. N'hésitez jamais à consulter si vous n'êtes pas sûr.</p>
+          <p class="ar">التمييز ضروري لأن الفتق قد يكون خطيرًا. إليكم المفاتيح: <strong>عند الجس</strong>، الاستسقاء كتلة <strong>طرية، متموجة وغير مؤلمة</strong> تحتوي على سائل؛ الفتق كتلة أكثر <strong>صلابة، قابلة للإرجاع أحيانًا</strong>، تحتوي على أمعاء. <strong>عند التنور</strong> (مصباح يدوي في الظلام)، الاستسقاء <strong>يضيء باللون الأحمر</strong> لأن السائل يسمح بمرور الضوء؛ الفتق يبقى معتمًا. <strong>في وضعية الاستلقاء</strong>، الاستسقاء التواصلي يقل؛ الفتق قد يقل أيضًا لكنه يعود عند ضغط البطن. <strong>في حالة الشك</strong>، الموجات فوق الصوتية الصفنية تسمح بالحسم النهائي. لا تترددوا أبدًا في الاستشارة إذا لم تكونوا متأكدين.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⏳ Jusqu'à quel âge peut-on attendre avant d'opérer une hydrocèle ?</span>
+          <span class="ar">⏳ حتى أي سن يمكن الانتظار قبل إجراء عملية الاستسقاء؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Pour l'<strong>hydrocèle non communicante</strong>, on peut attendre jusqu'à <strong>2 ans</strong> car 80 à 90 % des cas se résorbent spontanément. Au-delà de 2 ans, si le gonflement persiste ou s'agrandit, l'intervention chirurgicale est recommandée. Pour l'<strong>hydrocèle communicante</strong>, on n'attend pas : l'intervention est programmée <strong>dès le diagnostic</strong>, généralement entre 6 et 18 mois, car le risque d'évolution vers une hernie inguinale étranglée est réel. Le kyste du cordon spermatique, lui, ne se résorbe jamais spontanément : l'intervention est proposée dès qu'il est diagnostiqué, surtout s'il est en croissance.</p>
+          <p class="ar">بالنسبة لـ <strong>الاستسقاء غير التواصلي</strong>، يمكن الانتظار حتى <strong>سنتين</strong> لأن 80 إلى 90% من الحالات تختفي تلقائيًا. بعد 2 سنوات، إذا استمر التورم أو تضخم، يُوصى بالتدخل الجراحي. بالنسبة لـ <strong>الاستسقاء التواصلي</strong>، لا ننتظر: يُبرمج التدخل <strong>فور التشخيص</strong>، عادةً بين 6 و18 شهرًا، لأن خطر التطور إلى فتق إربي مختنق حقيقي. أما الكيسة الحبلية، فهي لا تختفي أبدًا تلقائيًا: يُقترح التدخل فور تشخيصها، خاصة إذا كانت في نمو.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔪 L'opération risque-t-elle d'affecter la fertilité de mon fils plus tard ?</span>
+          <span class="ar">🔪 هل العملية تُعرّض خصوبة ابني للخطر لاحقًا؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Non, l'intervention chirurgicale pour hydrocèle ou kyste du cordon <strong>n'affecte pas la fertilité future</strong> quand elle est réalisée correctement. Au contraire, laisser une hydrocèle communicante non traitée peut être plus risqué car une hernie étranglée peut léser les vaisseaux sanguins du testicule. Pendant l'opération, le chirurgien pédiatre prend <strong>grand soin de préserver les vaisseaux spermatiques</strong> (artère et veine spermatiques) et le canal déférent (conduit qui transporte les spermatozoïdes). Le risque d'atrophie testiculaire par lésion vasculaire est extrêmement faible (moins de 0,5 %). Après l'intervention, le testicule se développe normalement et la fonction reproductive future est préservée.</p>
+          <p class="ar">لا، التدخل الجراحي للاستسقاء أو الكيسة الحبلية <strong>لا يؤثر على الخصوبة المستقبلية</strong> عندما يُجرى بشكل صحيح. على العكس، ترك استسقاء تواصلي بدون علاج قد يكون أكثر خطورة لأن الفتق المختنق قد يُلحق الضرر بالأوعية الدموية للخصية. أثناء العملية، يحرص جراح الأطفال <strong>بشدة على الحفاظ على الأوعية المنوية</strong> (الشريان والوريد المنويين) والقناة الدافقة (القناة التي تنقل الحيوانات المنوية). خطر ضمور الخصية بسبب إصابة وعائية ضئيل جدًا (أقل من 0.5%). بعد التدخل، تتطور الخصية بشكل طبيعي وتحفظ الوظيفة الإنجابية المستقبلية.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🏥 L'opération se fait-elle en ambulatoire ? Mon fils rentre le jour même ?</span>
+          <span class="ar">🏥 هل تُجرى العملية في العيادة الخارجية؟ هل يعود ابني في نفس اليوم؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, dans la grande majorité des cas, l'intervention est réalisée en <strong>ambulatoire</strong> (chirurgie de jour). L'enfant arrive le matin à jeun, est opéré sous anesthésie générale, et rentre chez lui <strong>le jour même ou le lendemain matin</strong>. L'hospitalisation de 24 heures peut être préférée pour les <strong>nourrissons de moins de 6 mois</strong> ou en cas d'hydrocèle bilatérale. La durée de l'opération est de 30 à 45 minutes. Les suites sont généralement très simples : douleur modérée contrôlée par du paracétamol, pansement léger pendant 48 heures, et retour aux activités normales en 3 à 5 jours. Une visite de contrôle est prévue à J7 et J30.</p>
+          <p class="ar">نعم، في الغالبية العظمى من الحالات، يُجرى التدخل في <strong>العيادة الخارجية</strong> (جراحة يومية). يأتي الطفل صباحًا ببطن فارغ، يُجرى له التدخل تحت تخدير عام، ويعود إلى بيته <strong>في نفس اليوم أو صباح اليوم التالي</strong>. الاستشفاء لمدة 24 ساعة قد يُفضّل لل<strong>رضع دون 6 أشهر</strong> أو في حالة استسقاء ثنائي الجانب. مدة العملية 30 إلى 45 دقيقة. النتائج عادة بسيطة جدًا: ألم معتدل يُسيطر عليه الباراسيتامول، ضمادة خفيف لمدة 48 ساعة، والعودة إلى الأنشطة العادية خلال 3 إلى 5 أيام. زيارة مراقبة مُبرمجة في اليوم 7 واليوم 30.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🩹 Y aura-t-il une cicatrice visible après l'opération ?</span>
+          <span class="ar">🩹 هل ستبقى ندبة مرئية بعد العملية؜؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">L'incision se fait dans le <strong>sillon inguinal naturel</strong> (le pli de l'aine), ce qui la rend très discrète. La cicatrice mesure environ <strong>2 à 3 cm</strong> et s'estompe considérablement avec le temps. Chez l'enfant, la cicatrisation est généralement excellente et la cicatrice devient quasi invisible après quelques mois. En cas d'approche laparoscopique (coelioscopie), les cicatrices sont encore plus petites (3 incisions de 3 à 5 mm). Il est important de protéger la cicatrice du soleil les premiers mois pour éviter une hyperpigmentation. Aucun pansement spécifique n'est nécessaire au-delà de J3.</p>
+          <p class="ar">يُجرى الشق في <strong>الأخدود الإربي الطبيعي</strong> (ثنية الفخذ)، مما يجعله غير ملحوظ جدًا. الندبة تبلغ حوالي <strong>2 إلى 3 سم</strong> وتتلاشى بشكل كبير مع الوقت. عند الطفل، التئام الجرح عادة ممتاز والندبة تصبح شبه غير مرئية بعد عدة أشهر. في حالة النهج بالمنظار (التنظير البطني)، الندبات أصغر (3 شقوق بـ 3 إلى 5 ملم). من المهم حماية الندبة من الشمس في الأشهر الأولى لتجنب التصبغ الزائد. لا يُحتاج لضمادة خاصة بعد اليوم 3.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔄 L'hydrocèle peut-elle récidiver après l'opération ?</span>
+          <span class="ar">🔄 هل يمكن أن يتكرر الاستسقاء بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Le taux de récidive est très faible, <strong>inférieur à 2 %</strong>, quand l'intervention est réalisée par un chirurgien pédiatre expérimenté avec une ligature haute correcte du processus vaginalis. Une récidive peut survenir si le sac péritonéal n'a pas été complètement fermé ou si une communication persistante minime n'a pas été détectée. Dans ce cas (rare), une réintervention est proposée. Parfois, un <strong>hydrocèle réactionnel</strong> peut apparaître dans les semaines suivant l'opération : il s'agit d'un épanchement liquiden transitoire lié à l'inflammation postopératoire, qui se résorbe spontanément en quelques semaines sans traitement.</p>
+          <p class="ar">معدل الانتكاس ضئيل جدًا، <strong>أقل من 2%</strong>، عندما يُجرى التدخل من قبل جراح أطفال متمرس مع رباط عالٍ صحيح للعملية المهبلية. قد يحدث انتكاس إذا لم يُغلق الكيس البريتوني بالكامل أو إذا بقيت تواصلات طفيفة غير مكتشفة. في هذه الحالة (نادرة)، يُقترح إعادة التدخل. أحيانًا، قد يظهر <strong>استسقاء تفاعلي</strong> في الأسابيع التالية للعملية: إنه تراكم سائل مؤقت مرتبط بالالتهاب بعد العملية، يختفي تلقائيًا خلال أسابيع قليلة بدون علاج.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⚠️ Quels sont les signes d'alerte après l'opération ?</span>
+          <span class="ar">⚠️ ما هي علامات الإنذار بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Les suites sont généralement simples, mais surveillez ces signes : <strong>Fièvre</strong> au-delà de 38,5 °C persistant plus de 24 heures ; <strong>gonflement scrotal qui augmente</strong> au lieu de diminuer après J3 ; <strong>rougeur, chaleur ou écoulement purulent</strong> au niveau de la plaie ; <strong>douleur intense</strong> non calmée par le paracétamol ; <strong>vomissements répétés</strong> ou refus de manger ; <strong>lethargie</strong> ou comportement inhabituel. En cas de l'un de ces signes, contactez immédiatement le chirurgien ou présentez-vous aux urgences. Le gonflement scrotal léger et une légère ecchymose (bleu) sont normaux les premiers jours et ne doivent pas inquiéter.</p>
+          <p class="ar">النتائج عادة بسيطة، لكن راقبوا هذه العلامات: <strong>حمى</strong> تتجاوز 38.5 درجة مئوية تستمر أكثر من 24 ساعة؛ <strong>تورم صفني يزداد</strong> بدل أن يقل بعد اليوم 3؛ <strong>احمرار، حرارة أو إفراز صديدي</strong> عند الجرح؛ <strong>ألم شديد</strong> لا يُهدأه الباراسيتامول؛ <strong>قيء متكرر</strong> أو رفض الأكل؛ <strong>خمول</strong> أو سلوك غير معتاد. في حالة واحدة من هذه العلامات، اتصلوا فورًا بالجراح أو اذهبوا إلى الطوارئ. التورم الصفني الخفيف والكدمة الطفيفة (زرقة) طبيعية في الأيام الأولى ولا يجب أن تقلق.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">📞 Comment prendre rendez-vous avec le Dr Ziane Khodja ?</span>
+          <span class="ar">📞 كيف أحجز موعدًا مع الدكتورة زيان خوجة؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Vous pouvez prendre rendez-vous par <strong>WhatsApp au +213 558 45 60 19</strong> ou en appelant directement. Le cabinet du Dr Ziane Khodja est situé à <strong>Ouled Moussa, Boumerdès</strong>. Pour un gonflement scrotal, la consultation permet de différencier l'hydrocèle bénigne d'une hernie inguinale ou d'autres pathologies (torsion testiculaire, kyste, tumeur) grâce à l'examen clinique et à l'échographie scrotale. En cas de <strong>torsion testiculaire</strong> (douleur soudaine, intense, avec gonflement et nausées), il s'agit d'une urgence absolue : dirigez-vous immédiatement aux urgences sans attendre de rendez-vous.</p>
+          <p class="ar">يمكنكم حجز موعد عبر <strong>واتساب على +213 558 45 60 19</strong> أو بالاتصال المباشر. عيادة الدكتورة زيان خوجة تقع في <strong>أولاد موسى، بومرداس</strong>. للتورم الصفني، تسمح الاستشارة بالتمييز بين الاستسقاء الحميد والفتق الإربي أو أمراض أخرى (اللفافة الخصية، الكيسة، الورم) بفضل الفحص السريري والموجات فوق الصوتية الصفنية. في حالة <strong>اللفافة الخصية</strong> (ألم مفاجئ، حاد، مع تورم وغثيان)، هذا طارئ مطلق: اذهبوا فورًا إلى الطوارئ دون انتظار موعد.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA -->
   <section>
     <div class="wrap">
@@ -408,6 +539,18 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const chevron=btn.querySelector('.faq-chevron');
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight='0px';});
+  document.querySelectorAll('.faq-chevron').forEach(c=>c.style.transform='rotate(0deg)');
+  if(!isOpen){
+    btn.classList.add('active');
+    content.style.maxHeight=content.scrollHeight+'px';
+    chevron.style.transform='rotate(180deg)';
+  }
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

@@ -64,6 +64,20 @@ section{padding:48px 0;}
 .cta-box h2{color:var(--white);}.cta-box p{color:#E0ECF8;}
 footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);background:var(--white);}
 footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
+
+/* FAQ Styles */
+.faq-section h2{font-family:'Fraunces',serif;color:var(--ink);text-align:center;margin-bottom:32px;font-size:clamp(1.4rem,3vw,1.8rem);}
+body.lang-ar .faq-section h2{font-family:'Markazi Text',serif;}
+.faq-item{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:16px;overflow:hidden;}
+.faq-btn{width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);gap:16px;}
+.faq-btn:hover{background:var(--accent-blue-light);}
+.faq-chevron{transition:transform .3s;color:var(--accent-blue);font-size:1.2rem;flex-shrink:0;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 24px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:20px;margin:0;}
+.faq-content strong{color:var(--ink);}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1.05rem;}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
@@ -318,6 +332,123 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="reveal faq-section">
+    <div class="wrap">
+      <h2 class="fr">❓ Questions fréquentes des parents</h2>
+      <h2 class="ar">❓ الأسئلة الشائعة من الأهالي</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">👶 On vient de diagnostiquer l'hypospadias de mon fils à la naissance — que faire ?</span>
+          <span class="ar">👶 تم تشخيص التشوه القضيبي لابني عند الولادة — ماذا أفعل؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Premièrement, <strong>ne paniquez pas</strong>. L'hypospadias est la malformation congénitale du pénis la plus fréquente et elle est <strong>parfaitement corrigeable</strong> par chirurgie. Prenez rendez-vous avec un chirurgien pédiatre spécialisé en urologie (comme le Dr Ziane Khodja) pour évaluer la <strong>forme et la sévérité</strong> de l'hypospadias. L'intervention est généralement programmée entre <strong>6 et 18 mois</strong>, ce qui laisse le temps de bien préparer le dossier. D'ici là, aucun soin particulier n'est nécessaire : l'enfant urine normalement, il faut juste veiller à une bonne hygiène. Ne tentez jamais de circoncire un enfant atteint d'hypospadias — le prépuce est précieux pour la reconstruction chirurgicale.</p>
+          <p class="ar">أولاً، <strong>لا تقلقوا</strong>. التشوه القضيبي هو التشوه الخلقي الأكثر شيوعًا في القضيب وهو <strong>قابل للتصحيح تمامًا</strong> بالجراحة. أخذوا موعدًا مع جراح أطفال متخصص في المسالك البولية (مثل الدكتورة زيان خوجة) لتقييم <strong>الشكل والشدة</strong> للتشوه القضيبي. يُبرمج التدخل عادة بين <strong>6 و 18 شهرًا</strong>، مما يترك الوقت لإعداد الملف جيدًا. حتى ذلك الحين، لا يُحتاج لعناية خاصة: الطفل يتبول بشكل طبيعي، يكفي الحرص على النظافة الجيدة. لا تحاولوا أبدًا ختان طفل مصاب بالتشوه القضيبي — القلفة ثمينة لإعادة البناء الجراحي.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔪 Pourquoi opérer si mon fils arrive quand même à uriner ?</span>
+          <span class="ar">🔪 لماذا نُجري عملية إذا كان ابني يستطيع التبول على أي حال؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Même si l'enfant urine, l'hypospadias non corrigé pose plusieurs problèmes à long terme. <strong>Fonctionnellement</strong>, le jet urinaire est dévié vers le bas, ce qui oblige l'enfant à s'accroupir pour uriner et peut causer des problèmes d'hygiène et de socialisation (école, piscine, toilettes publiques). <strong>Esthétiquement</strong>, l'aspect du pénis est altéré, ce qui peut affecter la confiance en soi à l'adolescence et à l'âge adulte. <strong>Sexuellement</strong>, la courbure ventrale (chordee) peut rendre les rapports sexuels difficiles ou douloureux plus tard. <strong>Pour la fertilité</strong>, le dépôt du sperme loin du col utérin peut réduire les chances de conception. La chirurgie vise à corriger tous ces aspects pour un développement physique et psychologique harmonieux.</p>
+          <p class="ar">حتى لو كان الطفل يتبول، التشوه القضيبي غير المصحح يسبب عدة مشاكل على المدى الطويل. <strong>وظيفيًا</strong>، تدفق البول منحرف نحو الأسفل، مما يُجبر الطفل على القرفصاء للتبول وقد يسبب مشاكل في النظافة والاندماج الاجتماعي (المدرسة، المسبح، المراحيض العامة). <strong>جماليًا</strong>، مظهر القضيب مُشوّه، مما قد يؤثر على الثقة بالنفس في المراهقة ومرحلة البلوغ. <strong>جنسيًا</strong>، الانحناء البطني (الانحناء) قد يجعل العلاقة الحميمة صعبة أو مؤلمة لاحقًا. <strong>للخصوبة</strong>، إيداع الحيوانات المنوية بعيدًا عن عنق الرحم قد يقلل من فرص الحمل. تهدف الجراحة إلى تصحيح كل هذه الجوانب لنمو جسدي ونفسي متناغم.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⏰ Pourquoi opérer si tôt (entre 6 et 18 mois) ? Ne vaut-il pas mieux attendre ?</span>
+          <span class="ar">⏰ لماذا نُجري العملية مبكرًا (بين 6 و 18 شهرًا)؟ أليس من الأفضل الانتظار؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">L'âge de <strong>6 à 18 mois</strong> est considéré comme optimal pour plusieurs raisons. <strong>Cicatrisation</strong> : la peau de l'enfant cicatrise mieux et plus rapidement que celle de l'adulte, avec moins de cicatrices. <strong>Psychologique</strong> : l'enfant n'a pas encore de mémoire traumatique des soins, et la période préscolaire permet une récupération sans stress scolaire. <strong>Anesthésie</strong> : les risques de l'anesthésie générale sont très faibles à cet âge chez un enfant en bonne santé. <strong>Tissus</strong> : les tissus sont plus malléables et la reconstruction est techniquement plus facile. Opérer avant l'âge de 2 ans évite aussi les problèmes de socialisation (change en crèche, piscine) et garantit que l'enfant n'aura aucun souvenir de l'intervention.</p>
+          <p class="ar">يُعتبر سن <strong>6 إلى 18 شهرًا</strong> مثاليًا لعدة أسباب. <strong>التئام الجرح</strong>: جلد الطفل يلتئم بشكل أفضل وأسرع من جلد البالغ، مع ندبات أقل. <strong>النفسي</strong>: الطفل ليس لديه ذاكرة صدمية للعناية بعد، وفترة ما قبل المدرسة تسمح بالتعافي بدون ضغط دراسي. <strong>التخدير</strong>: مخاطر التخدير العام ضئيلة جدًا في هذا السن لطفل بصحة جيدة. <strong>الأنسجة</strong>: الأنسجة أكثر مرونة والإعادة بناء أسهل تقنيًا. إجراء العملية قبل سن 2 سنة يتجنب أيضًا مشاكل الاندماج الاجتماعي (التغيير في الحضانة، المسبح) ويضمن أن الطفل لن يتذكر التدخل.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">✂️ Mon fils doit-il être circoncis avant ou après l'opération ?</span>
+          <span class="ar">✂️ هل يجب أن يُختن ابني قبل أو بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr"><strong>Non, et c'est très important.</strong> Dans l'hypospadias, le prépuce est <strong>indispensable</strong> pour la reconstruction chirurgicale. Le chirurgien utilise le tissu du prépuce (souvent en excès sur le dos du pénis) pour reconstruire l'urètre, le gland et la peau pénienne. Une circoncision préalable rendrait la chirurgie beaucoup plus difficire, voire impossible, et obligerait à utiliser des greffes de peau ailleurs sur le corps (avec des cicatrices supplémentaires). Après l'opération, l'aspect final peut ressembler à une circoncision (prépuce reconstitué court) ou le prépuce peut être conservé selon la technique et les préférences parentales. C'est une discussion à avoir avec le chirurgien avant l'intervention.</p>
+          <p class="ar"><strong>لا، وهذا مهم جدًا.</strong> في التشوه القضيبي، القلفة <strong>ضرورية</strong> لإعادة البناء الجراحي. يستخدم الجراح نسيج القلفة (غالبًا فائض على ظهر القضيب) لإعادة بناء الإحليل، الحشفة وجلد القضيب. الختان المسبق يجعل الجراحة أصعب بكثير، أو مستحيلة أحيانًا، ويُجبر على استخدام زراعة جلد من مكان آخر في الجسم (مع ندبات إضافية). بعد العملية، قد يبدو المظهر النهائي مشابهًا للختان (قلفة مُعاد بناؤها قصيرة) أو قد تُحفظ القلفة حسب التقنية وتفضيلات الأهل. هذه مناقشة يجب إجراؤها مع الجراح قبل التدخل.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🏥 Combien de temps dure l'hospitalisation et la convalescence ?</span>
+          <span class="ar">🏥 كم تستمر الاستشفاء وفترة النقاهة؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">L'hospitalisation dure généralement <strong>1 à 3 jours</strong> selon la complexité de la forme. L'enfant est opéré sous anesthésie générale et sort avec un <strong>pansement compressif</strong> sur le pénis et une <strong>sonde urinaire</strong> (ou cathéter sus-pubien) qui reste en place 3 à 7 jours. À domicile, il faut : changer le pansement selon les instructions (généralement quotidiennement), surveiller la sonde urinaire, administrer les antalgiques prescrits, et éviter les couches trop serrées. Le retour à la crèche est possible après <strong>2 à 3 semaines</strong>. Les activités physiques intenses (toboggan, vélo, trampoline) sont à éviter pendant <strong>4 à 6 semaines</strong>. La sonde est retirée en consultation à J3-J7. Les consultations de suivi sont programmées à J7, J15, 1 mois, 3 mois et 6 mois.</p>
+          <p class="ar">الاستشفاء يستمر عادةً <strong>1 إلى 3 أيام</strong> حسب تعقيد الشكل. يُجرى التدخل تحت تخدير عام ويخرج الطفل بـ <strong>ضمادة ضاغطة</strong> على القضيب و<strong>أنبوب بولي</strong> (أو قسطرة فوق العانية) تبقى لمدة 3 إلى 7 أيام. في المنزل، يجب: تغيير الضمادة حسب التعليمات (عادةً يوميًا)، مراقبة الأنبوب البولي، إعطاء المسكنات المُوصى بها، وتجنب الحفاضات الضيقة جدًا. العودة إلى الحضانة ممكنة بعد <strong>2 إلى 3 أسابيع</strong>. الأنشطة البدنية المكثفة (الزلاقة، الدراجة، الترامبولين) يجب تجنبها لمدة <strong>4 إلى 6 أسابيع</strong>. يُزال الأنبوب في الاستشارة في اليوم 3-7. زيارات المتابعة مُبرمجة في اليوم 7، 15، شهر، 3 أشهر و6 أشهر.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⚠️ Quels sont les signes de complication après l'opération ?</span>
+          <span class="ar">⚠️ ما هي علامات المضاعفات بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Les suites sont généralement simples, mais surveillez attentivement : <strong>Fuite d'urine par un orifice secondaire</strong> (fistule urétrale) : apparition d'un jet urinaire supplémentaire en dehors du méat principal, souvent visible après le retrait de la sonde. <strong>Rétrécissement du méat</strong> (sténose) : jet urinaire fin, en gouttelettes, ou effort pour uriner. <strong>Infection</strong> : rougeur, chaleur, écoulement purulent autour du pansement, fièvre au-delà de 38,5 °C. <strong>Déhiscence</strong> : ouverture partielle de la plaie chirurgicale. <strong>Nécrose</strong> : zone noircie ou bleuâtre sur le gland ou la peau (urgence absolue). En cas de l'un de ces signes, contactez immédiatement le chirurgien. Un œdème (gonflement) modéré du gland et des paupières est normal les premiers jours.</p>
+          <p class="ar">النتائج عادة بسيطة، لكن راقبوا بعناية: <strong>تسرب البول عبر فتحة ثانوية</strong> (ناسور بولي): ظهور تدفق بولي إضافي خارج فتحة الإحليل الرئيسية، غالبًا ما يُلاحظ بعد إزالة الأنبوب. <strong>تضيق فتحة الإحليل</strong> (تضيق): تدفق بولي رفيع، على شكل قطرات، أو جهد للتبول. <strong>عدوى</strong>: احمرار، حرارة، إفراز صديدي حول الضمادة، حمى تتجاوز 38.5 درجة مئوية. <strong>انفصال</strong>: انفتاح جزئي للجرح الجراحي. <strong>نخر</strong>: منطقة سوداء أو زرقاء على الحشفة أو الجلد (طارئ مطلق). في حالة واحدة من هذه العلامات، اتصلوا فورًا بالجراح. الوذمة (تورم) المعتدلة للحشفة والجفون طبيعية في الأيام الأولى.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔄 L'opération peut-elle échouer ou nécessiter une reprise ?</span>
+          <span class="ar">🔄 هل يمكن أن تفشل العملية أو تتطلب إعادة؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Le taux de réussite est élevé : <strong>85 à 95 %</strong> pour les formes distales (glandulaires, coronales, pénien distal) et <strong>60 à 80 %</strong> pour les formes proximales (pénien proximal, pénoscrotal, scrotal, perineal). Cependant, <strong>10 à 20 %</strong> des interventions nécessitent une <strong>reprise chirurgicale</strong>, le plus souvent pour une fistule urétrale (fuite d'urine par un orifice secondaire) ou une sténose du méat (rétrécissement de l'orifice). Ces reprises sont généralement simples, réalisées 6 à 12 mois après la première intervention pour laisser les tissus cicatriser complètement. Il est important de comprendre que l'hypospadias, surtout les formes sévères, est une malformation complexe et que plusieurs étapes chirurgicales peuvent être nécessaires pour un résultat optimal. Le chirurgien pédiatre discutera avec vous de la stratégie la mieux adaptée.</p>
+          <p class="ar">معدل النجاح مرتفع: <strong>85 إلى 95%</strong> للأشكال البعيدة (الحشفية، التاجية، القضيبية البعيدة) و<strong>60 إلى 80%</strong> للأشكال القريبة (القضيبية القريبة، الصفنية، الصفنية الكاملة، العجانية). ومع ذلك، <strong>10 إلى 20%</strong> من التدخلات تتطلب <strong>إعادة جراحية</strong>، غالبًا لناسور بولي (تسرب بولي عبر فتحة ثانوية) أو تضيق فتحة الإحليل (ضيق الفتحة). هذه الإعادة عادة بسيطة، تُجرى 6 إلى 12 شهرًا بعد التدخل الأول لترك الأنسجة تلتئم تمامًا. من المهم فهم أن التشوه القضيبي، خاصة الأشكال الشديدة، هو تشوه معقد وقد تكون هناك حاجة لعدة مراحل جراحية للحصول على نتيجة مثلى. جراح الأطفال سيناقش معكم الاستراتيجية الأنسب.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">💑 Mon fils pourra-t-il avoir une vie sexuelle et reproductive normale après l'opération ?</span>
+          <span class="ar">💑 هل سيتمكن ابني من حياة جنسية وتناسلية طبيعية بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, dans la grande majorité des cas. L'objectif de la chirurgie est précisément de garantir une <strong>fonction urinaire, sexuelle et reproductive normale</strong> à l'âge adulte. Après correction réussie, le jet urinaire est dirigé vers l'avant, la courbure est corrigée (permettant des rapports sexuels sans douleur), et le méat est positionné au sommet du gland (permettant un dépôt spermatique optimal). Les études de suivi à long terme montrent que <strong>plus de 90 % des hommes opérés d'hypospadias</strong> ont une fonction sexuelle et reproductive satisfaisante. Les formes sévères (perineal, scrotal) peuvent parfois nécessiter des reprises et un suivi plus rapproché, mais les résultats fonctionnels restent globalement bons. Le suivi psychologique est aussi important : rassurez votre enfant, répondez à ses questions à mesure qu'il grandit, et n'hésitez pas à consulter un psychologue si nécessaire.</p>
+          <p class="ar">نعم، في الغالبية العظمى من الحالات. هدف الجراحة هو بالضبط ضمان <strong>وظيفة بولية وجنسية وتناسلية طبيعية</strong> في مرحلة البلوغ. بعد تصحيح ناجح، يكون تدفق البول متجهًا للأمام، يُصحح الانحناء (مما يسمح بعلاقة حميمة بدون ألم)، ويُوضع فتحة الإحليل في قمة الحشفة (مما يسمح بإيداع مثالي للحيوانات المنوية). تُظهر دراسات المتابعة طويلة المدى أن <strong>أكثر من 90% من الرجال المُجرى لهم عملية التشوه القضيبي</strong> لديهم وظيفة جنسية وتناسلية مرضية. الأشكال الشديدة (العجاني، الصفني) قد تتطلب إعادات ومتابعة أوثق أحيانًا، لكن النتائج الوظيفية تبقى جيدة بشكل عام. المتابعة النفسية مهمة أيضًا: أرحموا طفلكم، أجيبوا على أسئلته مع نموه، ولا تترددوا في استشارة نفسي إذا لزم الأمر.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">📞 Comment prendre rendez-vous avec le Dr Ziane Khodja ?</span>
+          <span class="ar">📞 كيف أحجز موعدًا مع الدكتورة زيان خوجة؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Vous pouvez prendre rendez-vous par <strong>WhatsApp au +213 558 45 60 19</strong> ou en appelant directement. Le cabinet du Dr Ziane Khodja est situé à <strong>Ouled Moussa, Boumerdès</strong>. Pour l'hypospadias, la première consultation permet d'évaluer la forme et la sévérité de la malformation, d'expliquer la technique chirurgicale la mieux adaptée, et de programmer l'intervention. Il est recommandé de consulter <strong>dès le diagnostic</strong> (souvent à la naissance) pour planifier l'opération dans les meilleurs délais. Nous assurons la prise en charge complète : consultation préopératoire, chirurgie, suivi postopératoire régulier, et reprises chirurgicales si nécessaire. N'hésitez pas à envoyer des photos par WhatsApp pour une première évaluation.</p>
+          <p class="ar">يمكنكم حجز موعد عبر <strong>واتساب على +213 558 45 60 19</strong> أو بالاتصال المباشر. عيادة الدكتورة زيان خوجة تقع في <strong>أولاد موسى، بومرداس</strong>. للتشوه القضيبي، تسمح الاستشارة الأولى بتقييم الشكل والشدة للتشوه، وشرح التقنية الجراحية الأنسب، وبرمجة التدخل. يُوصى بالاستشارة <strong>فور التشخيص</strong> (غالبًا عند الولادة) لتخطيط العملية في أفضل الآجال. نضمن التكفل الكامل: الاستشارة قبل العملية، الجراحة، المتابعة الدورية بعد العملية، وإعادة الجراحة إذا لزم الأمر. لا تترددوا في إرسال صور عبر واتساب لتقييم أولي.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA -->
   <section>
     <div class="wrap">
@@ -346,6 +477,18 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const chevron=btn.querySelector('.faq-chevron');
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight='0px';});
+  document.querySelectorAll('.faq-chevron').forEach(c=>c.style.transform='rotate(0deg)');
+  if(!isOpen){
+    btn.classList.add('active');
+    content.style.maxHeight=content.scrollHeight+'px';
+    chevron.style.transform='rotate(180deg)';
+  }
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

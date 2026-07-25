@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="robots" content="index, follow">
 <title>Circoncision chez l'enfant — Dr. Ziane Khodja | Chirurgie pédiatrique</title>
 <meta name="description" content="Circoncision chez l'enfant : indications, techniques, déroulement, soins postopératoires et récupération. Cabinet du Dr Ziane Khodja à Ouled Moussa, Boumerdès.">
-<link rel="canonical" href="https://drzianekhodja.vercel.app/circoncision.html">
+<link rel="canonical" href="https://drzianekhodja.netlify.app/circoncision.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet">
@@ -183,6 +179,18 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
     .timeline { flex-direction: column; align-items: center; gap: 32px; }
     .timeline::before { display: none; }
 }
+
+/* FAQ Section */
+.faq-section{background:var(--bg-card);border-radius:var(--radius);padding:32px;margin-bottom:24px;border:1px solid var(--line);}
+.faq-section h2{font-size:1.4rem;margin-bottom:24px;color:var(--accent-blue);text-align:center;}
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:box-shadow .2s ease;}
+.faq-item:hover{box-shadow:0 4px 12px rgba(0,96,176,0.08);}
+.faq-question{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;font-weight:600;color:var(--ink);font-size:.95rem;border:none;background:none;width:100%;text-align:left;font-family:inherit;}
+.faq-question .faq-icon{font-size:1.2rem;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+.faq-question .faq-chevron{margin-left:auto;font-size:.85rem;color:var(--ink-soft);transition:transform .3s ease;}
+.faq-item.active .faq-chevron{transform:rotate(180deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px 0 64px;color:var(--ink-soft);line-height:1.7;font-size:.92rem;}
+.faq-item.active .faq-answer{max-height:600px;padding:0 22px 18px 64px;}
 </style>
 
 </head>
@@ -236,7 +244,7 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
       <div class="info-section">
         <h2 class="fr">Qu'est-ce que la circoncision ?</h2>
         <h2 class="ar">ما هو الختان؟</h2>
-        <p class="fr">La circoncision est une intervention chirurgicale consistant à retirer le prépuce, la peau recouvrant le gland. Chez l'enfant, cette intervention peut être réalisée pour des raisons <strong>médicales</strong> (phimosis, infections récurrentes) ou <strong>religieuses/culturelles</strong>. Elle est pratiquée dans des conditions d'asepsie et de sécurité optimales par un chirurgien pédiatre qualifié.</p>
+        <p class="fr">La circoncision est une intervention chirurgicale consistant à retirer le prépuce, la peau recouvrant l'extrémité. Chez l'enfant, cette intervention peut être réalisée pour des raisons <strong>médicales</strong> (phimosis, infections récurrentes) ou <strong>religieuses/culturelles</strong>. Elle est pratiquée dans des conditions d'asepsie et de sécurité optimales par un chirurgien pédiatre qualifié.</p>
         <p class="ar">الختان هو تدخل جراحي يتكون من إزالة القلفة، الجلد الذي يغطي الحشفة. عند الطفل، يمكن إجراء هذا التدخل لأسباب <strong>طبية</strong> (الضيق القلفي، العدوى المتكررة) أو <strong>دينية/ثقافية</strong>. يُمارس في ظروف التعقيم والسلامة المثلى من قبل جراح أطفال مؤهل.</p>
       </div>
     </div>
@@ -252,8 +260,8 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
         <p class="ar">يوصى بالختان الطبي في الحالات التالية:</p>
         <ul class="fr">
           <li><strong>Phimosis pathologique</strong> : impossibilité de rétracter le prépuce au-delà de 3-4 ans, associée à des symptômes</li>
-          <li><strong>Paraphimosis</strong> : rétraction forcée du prépuce bloquée derrière le gland, urgence chirurgicale</li>
-          <li><strong>Balanites et balanoposthites récidivantes</strong> : infections récurrentes du gland et du prépuce</li>
+          <li><strong>Paraphimosis</strong> : rétraction forcée du prépuce bloquée derrière l'extrémité, urgence chirurgicale</li>
+          <li><strong>Balanites et balanoposthites récidivantes</strong> : infections récurrentes de l'extrémité et du prépuce</li>
           <li><strong>Sténose du méat urinaire</strong> : rétrécissement de l'orifice urinaire</li>
           <li><strong>Prévention des infections urinaires récurrentes</strong> chez les garçons présentant des anomalies urologiques</li>
         </ul>
@@ -455,7 +463,7 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
           <li>Rougeur diffuse avec chaleur locale</li>
           <li>Fièvre supérieure à 38,5 °C</li>
           <li>Difficulté à uriner ou absence d'urine pendant plus de 6 heures</li>
-          <li>Gonflement important du gland ou de la zone environnante</li>
+          <li>Gonflement important de l'extrémité ou de la zone environnante</li>
         </ul>
         <ul class="ar">
           <li>نزيف نشط لا يتوقف بعد 10 دقائق من الضغط</li>
@@ -494,7 +502,97 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
     </div>
   </section>
 
-  <!-- CTA -->
+  
+  <!-- FAQ -->
+  <section class="reveal">
+    <div class="wrap">
+      <div class="faq-section">
+        <h2 class="fr">❓ Questions fréquentes des parents</h2>
+        <h2 class="ar">❓ الأسئلة الشائعة من الأولياء</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🌙</span>
+            <span class="fr">Quel est le meilleur âge pour la circoncision selon la tradition algérienne ?</span>
+            <span class="ar">ما هو السن الأفضل للختان حسب التقليد الجزائري؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Dans la tradition algérienne et islamique, la circoncision (tahara ou khitan) est fortement recommandée et considérée comme un acte de purification. Médicalement, l'âge idéal est dans les <strong>premières semaines de vie</strong> (entre 7 et 40 jours), période où la cicatrisation est optimale et l'enfant moins sensible à la douleur. Beaucoup de familles choisissent le 7ème jour après la naissance, en lien avec l'Aqiqa. Néanmoins, l'intervention peut être réalisée à tout âge en toute sécurité par un chirurgien pédiatre qualifié.</p>
+            <p class="ar">في التقليد الجزائري والإسلامي، يُعتبر الختان (الطهارة أو الختان) مستحبًا بشدة ويُنظر إليه كعمل تطهير. طبيًا، السن المثالي هو في <strong>الأسابيع الأولى من الحياة</strong> (بين 7 و40 يومًا)، فترة يكون فيها التئام الجرح مثاليًا والطفل أقل حساسية للألم. تختار العديد من العائلات اليوم السابع بعد الولادة، ارتباطًا بالعقيقة. ومع ذلك، يمكن إجراء التدخل في أي سن بأمان تام من قبل جراح أطفال مؤهل.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🔧</span>
+            <span class="fr">Mon fils a été circoncis ailleurs et le résultat n'est pas bon — peut-on refaire l'opération ?</span>
+            <span class="ar">ابني خُتن في مكان آخر والنتيجة غير جيدة — هل يمكن إعادة العملية؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Oui, une <strong>reprise chirurgicale</strong> est possible et parfois nécessaire en cas de résultat insuffisant. Les indications les plus fréquentes incluent : cicatrice rétractile (sténose), excès de peau résiduel, asymétrie, ou complications esthétiques et fonctionnelles. Il est recommandé d'attendre <strong>au moins 6 mois</strong> après la première intervention pour laisser les tissus cicatriser complètement avant toute reprise. Le Dr Ziane Khodja évalue chaque cas individuellement et propose la technique de correction la plus adaptée.</p>
+            <p class="ar">نعم، <strong>إعادة التدخل الجراحي</strong> ممكنة وضرورية أحيانًا في حالة نتيجة غير كافية. تشمل المؤشرات الأكثر شيوعًا: الندبة الانكماشية (التضيق)، فائض الجلد المتبقي، عدم التناظر، أو المضاعفات الجمالية والوظيفية. يُنصح بالانتظار <strong>6 أشهر على الأقل</strong> بعد التدخل الأول للسماح للأنسجة بالالتئام الكامل قبل أي إعادة. تقيم د. زيان خوجة كل حالة على حدة وتقترح تقنية التصحيح الأنسب.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🩺</span>
+            <span class="fr">Quand faut-il envisager une reprise de circoncision ?</span>
+            <span class="ar">متى يجب التفكير في إعادة الختان؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Une reprise de circoncision peut être envisagée dans plusieurs situations : <strong>sténose cicatricielle</strong> (rétrécissement de l'ouverture urétrale ou de la peau), <strong>excès cutané important</strong> laissant l'aspect non circoncis, <strong>asymétrie marquée</strong>, ou <strong>adhérences cutanées</strong> entre la peau et l'extrémité. Ces complications sont plus fréquentes après des circoncisions réalisées dans des conditions non médicalisées. Une consultation spécialisée permet d'évaluer la nécessité d'une correction et de choisir le bon moment pour l'intervention.</p>
+            <p class="ar">يمكن التفكير في إعادة الختان في عدة حالات: <strong>التضيق الندبي</strong> (ضيق فتحة الإحليل أو الجلد)، <strong>فائض الجلد الكبير</strong> الذي يترك مظهرًا غير مختون، <strong>عدم التناظر الواضح</strong>، أو <strong>التصاقات جلدية</strong> بين الجلد والطرف. هذه المضاعفات أكثر شيوعًا بعد الختان المُجرّى في ظروف غير طبية. تسمح الاستشارة التخصصية بتقييم ضرورة التصحيح واختيار الوقت المناسب للتدخل.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">👨‍⚕️</span>
+            <span class="fr">Puis-je faire circoncire mon fils par un barbier (hajjam) traditionnel ?</span>
+            <span class="ar">هل يمكنني ختان ابني عند حجام تقليدي؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Bien que la tradition du <strong>hajjam</strong> (barbier traditionnel) soit ancrée dans certaines régions d'Algérie, il est fortement recommandé de faire appel à un <strong>chirurgien pédiatre qualifié</strong> pour plusieurs raisons : anesthésie adaptée à l'âge, asepsie chirurgicale rigoureuse, gestion des complications (saignement, infection), technique précise minimisant les risques de reprise, et suivi postopératoire. Les complications liées aux pratiques non médicalisées (sténose, excès cutané, infections) sont malheureusement fréquentes et nécessitent souvent une reprise chirurgicale coûteuse et traumatisante pour l'enfant.</p>
+            <p class="ar">على الرغم من أن تقليد <strong>الحجام</strong> (الحلاق التقليدي) متأصل في بعض مناطق الجزائر، يُنصح بشدة باللجوء إلى <strong>جراح أطفال مؤهل</strong> لعدة أسباب: تخدير مناسب للعمر، التعقيم الجراحي الدقيق، إدارة المضاعفات (النزيف، العدوى)، تقنية دقيقة تقلل من مخاطر إعادة التدخل، والمتابعة بعد العملية. للأسف، المضاعفات المرتبطة بالممارسات غير الطبية (التضيق، فائض الجلد، العدوى) شائعة وتتطلب غالبًا إعادة جراحية مكلفة ومؤلمة للطفل.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🍼</span>
+            <span class="fr">Comment préparer mon enfant le jour de la circoncision ?</span>
+            <span class="ar">كيف أُحضّر طفلك يوم الختان؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">La préparation est simple mais importante : assurez un <strong>jeûne de 3 à 4 heures</strong> avant l'intervention (pas de tétée juste avant), habillez votre enfant avec des <strong>vêtements amples et faciles à enlever</strong>, apportez une couche de rechange et ses affaires habituelles. Prévoyez un moyen de transport confortable pour le retour. Le jour J, restez calme — votre enfant ressent votre stress. L'intervention dure 15 à 20 minutes et vous pourrez le prendre dans vos bras immédiatement après. Le retour à domicile se fait le même jour dans la grande majorité des cas.</p>
+            <p class="ar">التحضير بسيط لكنه مهم: تأكدوا من <strong>صيام 3 إلى 4 ساعات</strong> قبل التدخل (لا رضاعة مباشرة قبله)، البسوا طفلكم <strong>ملابس فضفاضة وسهلة الإزالة</strong>، أحضروا حفاضة احتياطية وأغراضه المعتادة. جهزوا وسيلة نقل مريحة للعودة. في يوم العملية، ابقوا هادئين — طفلكلم يشعر بتوتركم. يستغرق التدخل 15 إلى 20 دقيقة ويمكنكم أخذه في أحضانكم فورًا بعده. العودة للمنزل تتم في نفس اليوم في الغالبية العظمى من الحالات.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🧴</span>
+            <span class="fr">Quels soins faire à la maison après la circoncision ?</span>
+            <span class="ar">ما هي العناية المنزلية بعد الختان؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Les soins postopératoires sont essentiels pour une bonne cicatrisation : <strong>nettoyez doucement</strong> la zone à l'eau et au savon neutre à chaque change, <strong>appliquez la pommade</strong> cicatrisante prescrite (généralement à base de vaseline ou d'antibiotique local), <strong>utilisez des couches lâches</strong> pour éviter le frottement, et surveillez les signes d'alerte (saignement persistant, rougeur diffuse, fièvre). Évitez les bains prolongés pendant les premiers jours. Une consultation de contrôle est prévue à J7 et J14 pour vérifier la cicatrisation. N'hésitez pas à contacter le cabinet en cas de doute.</p>
+            <p class="ar">العناية بعد العملية ضرورية لالتئام جيد: <strong>نظفوا بلطف</strong> المنطقة بالماء والصابون المحايد عند كل تغيير، <strong>طبقوا المرهم</strong> الموصوف (عادة على أساس الفازلين أو المضاد الحيوي الموضعي)، <strong>استخدموا حفاضات فضفاضة</strong> لتجنب الاحتكاك، وراقبوا علامات الإنذار (نزيف مستمر، احمرار منتشر، حمى). تجنبوا الاستحمام الطويل في الأيام الأولى. زيارة المتابعة مجدولة في اليوم 7 واليوم 14 للتحقق من التئام الجرح. لا تترددوا في الاتصال بالعيادة في حالة الشك.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- CTA -->
   <section>
     <div class="wrap">
       <div class="cta-box">
@@ -525,6 +623,13 @@ function toggleLang(){
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+  if (!wasActive) item.classList.add('active');
+}
 </script>
 </body>
 </html>

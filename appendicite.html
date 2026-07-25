@@ -64,10 +64,25 @@ section{padding:48px 0;}
 .cta-box h2{color:var(--white);}.cta-box p{color:#E0ECF8;}
 footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);background:var(--white);}
 footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
+
+/* FAQ Styles */
+.faq-section h2{font-family:'Fraunces',serif;color:var(--ink);text-align:center;margin-bottom:32px;font-size:clamp(1.4rem,3vw,1.8rem);}
+body.lang-ar .faq-section h2{font-family:'Markazi Text',serif;}
+.faq-item{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:16px;overflow:hidden;}
+.faq-btn{width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);gap:16px;}
+.faq-btn:hover{background:var(--accent-blue-light);}
+.faq-chevron{transition:transform .3s;color:var(--accent-blue);font-size:1.2rem;flex-shrink:0;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 24px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:20px;margin:0;}
+.faq-content strong{color:var(--ink);}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1.05rem;}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
 </style>
+<base target="_blank">
 </head>
 <body class="lang-fr">
 
@@ -328,6 +343,123 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="reveal faq-section">
+    <div class="wrap">
+      <h2 class="fr">❓ Questions fréquentes des parents</h2>
+      <h2 class="ar">❓ الأسئلة الشائعة من الأهالي</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🩺 Comment reconnaître l'appendicite chez un jeune enfant qui ne sait pas encore bien parler ?</span>
+          <span class="ar">🩺 كيف نتعرف على التهاب الزائدة الدودية عند طفل صغير لا يعرف التحدث جيدًا بعد؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Chez le tout-petit, l'appendicite se manifeste par des <strong>signes comportementaux</strong> : irritabilité inhabituelle, pleurs inconsolables, refus de marcher ou de sauter, position couchée avec les jambes repliées sur le ventre (posture antalgique). L'enfant peut aussi refuser de manger, vomir après le début de la douleur, ou présenter une fièvre modérée. Si votre enfant ne peut pas localiser la douleur, observez sa réaction quand vous touchez doucement son ventre — un grimace ou un retrait brusque est un signe d'alerte. En cas de doute, consultez rapidement.</p>
+          <p class="ar">عند الرضيع الصغير، يظهر التهاب الزائدة الدودية من خلال <strong>علامات سلوكية</strong>: تهيج غير معتاد، بكاء غير مُسكَّت، رفض المشي أو القفز، وضعية مستلقية مع ثني الساقين على البطن (وضعية مُسكّنة للألم). قد يرفض الطفل أيضًا تناول الطعام، يتقيأ بعد بدء الألم، أو يظهر حمى معتدلة. إذا لم يستطع طفلكم تحديد مكان الألم، لاحظوا رد فعله عند لمس بطنه برفق — عبوس أو انسحاب مفاجئ هو علامة إنذار. في حالة الشك، استشيروا سريعًا.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⏱️ Combien de temps puis-je attendre avant de consulter si je soupçonne une appendicite ?</span>
+          <span class="ar">⏱️ كم من الوقت يمكنني الانتظار قبل الاستشارة إذا شككت في التهاب الزائدة الدودية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr"><strong>Ne attendez pas.</strong> L'appendicite est une urgence chirurgicale. Le risque de perforation augmente significativement après <strong>48 heures</strong> du début des symptômes. Chez les enfants de moins de 5 ans, ce risque est encore plus élevé (20-30 %). Chaque heure compte : plus l'intervention est précoce, plus les complications sont rares et la récupération rapide. Si vous observez douleur abdominale migratoire, fièvre et vomissements, présentez-vous immédiatement aux urgences ou contactez votre chirurgien pédiatre.</p>
+          <p class="ar"><strong>لا تنتظروا.</strong> التهاب الزائدة الدودية هو طارئ جراحي. يزداد خطر الثقب بشكل كبير بعد <strong>48 ساعة</strong> من بدء الأعراض. عند الأطفال دون 5 سنوات، يكون هذا الخطر أعلى (20-30%). كل ساعة تهم: كلما كانت التدخل أبكر، كانت المضاعفات أندر والتعافي أسرع. إذا لاحظتم ألمًا بطنيًا منتقلًا، حمى وقيء، اذهبوا فورًا إلى الطوارئ أو اتصلوا بجراح الأطفال.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">💊 Mon enfant a mal au ventre et de la fièvre — est-ce forcément une appendicite ?</span>
+          <span class="ar">💊 طفلي يعاني من ألم بطني وحمى — هل هذا حتمًا التهاب الزائدة الدودية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Non, plusieurs pathologies peuvent donner les mêmes symptômes : <strong>gastro-entérite</strong> (vomissements avant la douleur, diarrhée profuse), <strong>adénite mésentérique</strong> (ganglions abdominaux), <strong>invagination intestinale</strong> (douleur paroxystique avec selles en gélatine de groseille), ou encore une <strong>infection urinaire</strong>. Ce qui distingue l'appendicite : la douleur commence souvent autour du nombril puis migre vers le bas-ventre droit, les vomissements surviennent <em>après</em> le début de la douleur, et l'enfant refuse de manger. Seul un examen médical permet de faire la différence.</p>
+          <p class="ar">لا، يمكن لعدة أمراض أن تعطي نفس الأعراض: <strong>التهاب المعدة والأمعاء</strong> (قيء قبل الألم، إسهال غزير)، <strong>التهاب العقد اللمفاوية المساريقية</strong> (عقد بطنية)، <strong>الانغلاف المعوي</strong> (ألم نوبي مع براز على شكل هلام الكشمش)، أو <strong>التهاب المسالك البولية</strong>. ما يميز التهاب الزائدة الدودية: الألم يبدأ غالبًا حول السرة ثم ينتقل إلى أسفل البطن الأيمن، القيء يأتي <em>بعد</em> بدء الألم، والطفل يرفض الأكل. الفحص الطبي وحده هو الذي يمكّن من التمييز.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔪 L'appendicectomie par laparoscopie est-elle sûre pour un enfant ?</span>
+          <span class="ar">🔪 هل استئصال الزائدة الدودية بالمنظار آمن للطفل؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, la <strong>laparoscopie est la technique de référence</strong> chez l'enfant. Elle est réalisée sous anesthésie générale par un chirurgien pédiatre spécialisé. Les avantages sont nombreux : 3 petites incisions de 5 mm (scarification minimale), douleurs postopératoires réduites, récupération plus rapide (retour à l'école en 1 semaine), et meilleure visualisation de l'abdomen pour écarter d'autres diagnostics. Les complications sont rares (moins de 2 %) et comparablement plus faibles qu'avec la chirurgie ouverte. Cette technique est pratiquée dès le nourrisson.</p>
+          <p class="ar">نعم، <strong>التنظير هو التقنية المرجعية</strong> عند الطفل. يُجرى تحت تخدير عام من قبل جراح أطفال متخصص. الفوائد عديدة: 3 شقوق صغيرة بقطر 5 ملم (ندبة طفيفة)، آلام ما بعد العملية مخفضة، تعافي أسرع (العودة إلى المدرسة في أسبوع)، ورؤية أفضل للبطن لاستبعاد تشخيصات أخرى. المضاعفات نادرة (أقل من 2%) وأقل من الجراحة المفتوحة. تُمارس هذه التقنية منذ الرضاعة.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🏫 Combien de temps mon enfant restera-t-il absent de l'école après l'opération ?</span>
+          <span class="ar">🏫 كم من الوقت سيغيب طفلي عن المدرسة بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Pour une <strong>appendicectomie simple sans complication</strong>, le retour à l'école est possible après <strong>5 à 7 jours</strong>. En cas de perforation ou d'abcès, l'absence peut s'étendre à <strong>2 à 3 semaines</strong>. Les activités sportives (course, natation, football) doivent être évitées pendant 2 à 4 semaines selon l'ampleur de l'intervention. L'enfant peut reprendre ses activités légères dès qu'il se sent bien, mais il faut éviter les efforts intenses qui pourraient tensionner les cicatrices abdominales.</p>
+          <p class="ar">ل<strong>استئصال الزائدة البسيط بدون مضاعفات</strong>، يمكن العودة إلى المدرسة بعد <strong>5 إلى 7 أيام</strong>. في حالة الثقب أو الخراج، قد تمتد الغيابات إلى <strong>2 إلى 3 أسابيع</strong>. يجب تجنب الأنشطة الرياضية (الجري، السباحة، كرة القدم) لمدة 2 إلى 4 أسابيع حسب حجم التدخل. يمكن للطفل استئناف أنشطته الخفيفة بمجرد شعوره بالتحسن، لكن يجب تجنب الجهود الشاقة التي قد تُرهق الندبات البطنية.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🍽️ Quelle alimentation après l'opération ?</span>
+          <span class="ar">🍽️ ما هي التغذية بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La reprise alimentaire est <strong>progressive</strong> : dès le réveil de l'anesthésie, on commence par des liquides clairs (eau, thé, bouillon). Si tout se passe bien, on passe aux aliments mous (compote, yaourt, soupe) le jour même, puis à une alimentation normale dès le lendemain. Il n'y a <strong>pas de régime strict</strong> à long terme. Privilégiez les aliments riches en fibres (fruits, légumes, céréales complètes) et assurez une bonne hydratation pour faciliter le transit intestinal. Évitez les aliments gras ou très sucrés les premiers jours qui peuvent causer des nausées.</p>
+          <p class="ar">الاستئناف الغذائي <strong>تدريجي</strong>: منذ استيقاظ التخدير، نبدأ بالسوائل الشفافة (ماء، شاي، مرق). إذا سار كل شيء على ما يرام، ننتقل إلى الأطعمة الطرية (هريس، زبادي، حساء) في نفس اليوم، ثم إلى التغذية العادية من اليوم التالي. لا يوجد <strong>نظام غذائي صارم</strong> على المدى الطويل. فضّلوا الأطعمة الغنية بالألياف (فواكه، خضروات، حبوب كاملة) وتأكدوا من ترطيب جيد لتسهيل العبور المعوي. تجنبوا الأطعمة الدهنية أو شديدة السكر في الأيام الأولى التي قد تسبب الغثيان.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔄 L'appendicite peut-elle récidiver après une appendicectomie ?</span>
+          <span class="ar">🔄 هل يمكن أن يتكرر التهاب الزائدة الدودية بعد استئصالها؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Non, une fois l'appendice retiré, <strong>l'appendicite ne peut pas récidiver</strong>. Cependant, si des complications (abcès, péritonite) ont été traitées par drainage et antibiothérapie sans appendicectomie (traitement conservateur), un risque de récidive existe (10-20 %). Dans ce cas, une appendicectomie programmée est souvent proposée 6 à 8 semaines plus tard. Après une appendicectomie complète, les douleurs abdominales futures seront d'autre origine et nécessiteront un nouvel avis médical.</p>
+          <p class="ar">لا، بمجرد إزالة الزائدة الدودية، <strong>لا يمكن أن يتكرر التهابها</strong>. ومع ذلك، إذا عُولجت مضاعفات (خراج، التهاب بريتون) بالتصريف والمضاد الحيوي بدون استئصال (علاج تحفظي)، فإن خطر التكرار موجود (10-20%). في هذه الحالة، يُقترح غالبًا استئصال الزائدة الدودية المبرمج بعد 6 إلى 8 أسابيع. بعد استئصال كامل، ستكون آلام البطن المستقبلية من أصل آخر وستتطلب رأيًا طبيًا جديدًا.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">💰 Quel est le coût approximatif d'une appendicectomie ?</span>
+          <span class="ar">💰 ما هي التكلفة التقريبية لاستئصال الزائدة الدودية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Le coût varie selon le pays, l'établissement (public/privé) et la complexité du cas. En Algérie, dans le secteur public, les soins sont pris en charge par la sécurité sociale (CNAS/CASNOS) avec un ticket modérateur. En clinique privée, le coût global (chirurgie, anesthésie, hospitalisation) dépend de la durée de séjour et des complications éventuelles. N'hésitez pas à nous contacter pour une estimation personnalisée. L'important est de ne pas retarder la prise en charge pour des raisons financières — l'appendicite non traitée peut avoir des conséquences graves.</p>
+          <p class="ar">تختلف التكلفة حسب البلد، المؤسسة (عام/خاص) وتعقيد الحالة. في الجزائر، في القطاع العام، تُغطى الرعاية من قبل الضمان الاجتماعي (كناص/كناص) مع مساهمة المؤمن. في العيادة الخاصة، يعتمد التكلفة الإجمالية (الجراحة، التخدير، الاستشفاء) على مدة الإقامة والمضاعفات المحتملة. لا تترددوا في الاتصال بنا لتقدير شخصي. المهم هو عدم تأخير التكفل لأسباب مالية — التهاب الزائدة الدودية غير المعالج قد يكون له عواقب وخيمة.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">📱 Puis-je contacter le Dr Ziane Khodja en urgence ?</span>
+          <span class="ar">📱 هل يمكنني الاتصال بالدكتورة زيان خوجة في حالة الطوارئ؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, en cas d'urgence suspectée, vous pouvez nous contacter par <strong>WhatsApp au +213 558 45 60 19</strong> ou appeler directement. Pour les urgences vitales (enfant inconscient, douleur insupportable, choc), dirigez-vous immédiatement vers le service des urgences le plus proche. Le cabinet du Dr Ziane Khodja est situé à <strong>Ouled Moussa, Boumerdès</strong>. Nous sommes disponibles pour évaluer la situation et orienter vers la prise en charge la plus adaptée.</p>
+          <p class="ar">نعم، في حالة طارئ مشتبه فيه، يمكنكم الاتصال بنا عبر <strong>واتساب على +213 558 45 60 19</strong> أو الاتصال مباشرة. للحالات الحرجة (طفل فاقد الوعي، ألم لا يُحتمل، صدمة)، اذهبوا فورًا إلى أقرب خدمة طوارئ. عيادة الدكتورة زيان خوجة تقع في <strong>أولاد موسى، بومرداس</strong>. نحن متوفرون لتقييم الوضع وتوجيهكم نحو أفضل تكفل.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA -->
   <section>
     <div class="wrap">
@@ -356,6 +488,18 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const chevron=btn.querySelector('.faq-chevron');
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight='0px';});
+  document.querySelectorAll('.faq-chevron').forEach(c=>c.style.transform='rotate(0deg)');
+  if(!isOpen){
+    btn.classList.add('active');
+    content.style.maxHeight=content.scrollHeight+'px';
+    chevron.style.transform='rotate(180deg)';
+  }
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

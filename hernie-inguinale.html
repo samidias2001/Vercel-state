@@ -64,6 +64,20 @@ section{padding:48px 0;}
 .cta-box h2{color:var(--white);}.cta-box p{color:#E0ECF8;}
 footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);background:var(--white);}
 footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
+
+/* FAQ Styles */
+.faq-section h2{font-family:'Fraunces',serif;color:var(--ink);text-align:center;margin-bottom:32px;font-size:clamp(1.4rem,3vw,1.8rem);}
+body.lang-ar .faq-section h2{font-family:'Markazi Text',serif;}
+.faq-item{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:16px;overflow:hidden;}
+.faq-btn{width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);gap:16px;}
+.faq-btn:hover{background:var(--accent-blue-light);}
+.faq-chevron{transition:transform .3s;color:var(--accent-blue);font-size:1.2rem;flex-shrink:0;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 24px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:20px;margin:0;}
+.faq-content strong{color:var(--ink);}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1.05rem;}
+
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
@@ -212,6 +226,123 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="reveal faq-section">
+    <div class="wrap">
+      <h2 class="fr">❓ Questions fréquentes des parents</h2>
+      <h2 class="ar">❓ الأسئلة الشائعة من الأهالي</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">👶 La hernie de mon bébé disparaît quand il dort — est-ce grave ?</span>
+          <span class="ar">👶 فتق طفلي يختفي عندما ينام — هل هذا خطير؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">C'est un signe <strong>typique et rassurant</strong> de hernie inguinale simple (réductible). Le gonflement apparaît quand l'enfant pleure, tousse ou fait effort car la pression abdominale pousse l'intestin dans le canal. Au repos, il rentre spontanément. Cependant, ce phénomène ne signifie pas que la hernie va guérir seule — <strong>le canal reste ouvert</strong> et le risque d'étranglement persiste. L'intervention chirurgicale reste indispensable, idéalement programmée entre 3 et 12 mois. Si le gonflement ne rentre plus ou si l'enfant a mal, c'est une urgence.</p>
+          <p class="ar">هذه علامة <strong>نموذجية ومُطمئنة</strong> لفتق إربي بسيط (قابل للإرجاع). يظهر الانتفاخ عندما يبكي الطفل أو يسعل أو يبذل جهدًا لأن ضغط البطن يدفع الأمعاء إلى القناة. في حالة الراحة، يعود تلقائيًا. ومع ذلك، هذا لا يعني أن الفتق سُشفى من تلقاء نفسه — <strong>القناة تبقى مفتوحة</strong> وخطر الاختناق يبقى قائمًا. العملية الجراحية تبقى ضرورية، يُفضل برمجتها بين 3 و 12 شهرًا. إذا لم يعد الانتفاخ أو إذا أصيب الطفل بألم، فهذا طارئ.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">⚠️ Comment reconnaître une hernie étranglée chez mon enfant ?</span>
+          <span class="ar">⚠️ كيف نتعرف على الفتق المختنق عند طفلي؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">L'<strong>étranglement</strong> survient quand le contenu herniaire reste coincé et que sa vascularisation est coupée. C'est une <strong>urgence chirurgicale absolue</strong> (moins de 6 heures pour sauver l'intestin). Signes d'alerte : le gonflement devient <strong>dur, douloureux et ne rentre plus</strong> même quand l'enfant est calme ; l'enfant est <strong>irritable, refuse de manger</strong> ; apparition de <strong>vomissements</strong> (souvent bilieux/verts) ; <strong>ballonnement abdominal</strong> ; pâleur et fièvre. En cas de suspicion, ne massagez jamais la zone et présentez-vous immédiatement aux urgences. Chaque minute compte pour éviter la nécrose intestinale.</p>
+          <p class="ar">يحدث <strong>الاختناق</strong> عندما يبقى محتوى الفتق عالقًا وتُقطع ترويته الدموية. هذا <strong>طارئ جراحي مطلق</strong> (أقل من 6 ساعات لإنقاذ الأمعاء). علامات الإنذار: يصبح الانتفاخ <strong>صلبًا، مؤلمًا ولا يعود</strong> حتى عندما يكون الطفل هادئًا؛ الطفل <strong>منزعج، يرفض الأكل</strong>؛ ظهور <strong>قيء</strong> (غالبًا صفراوي/أخضر)؛ <strong>انتفاخ البطن</strong>؛ شحوب وحمى. في حالة الشك، لا تدلكوا المنطقة أبدًا واذهبوا فورًا إلى الطوارئ. كل دقيقة تهم لتجنب نخر الأمعاء.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔪 À quel âge opérer la hernie inguinale de mon enfant ?</span>
+          <span class="ar">🔪 في أي سن نُجري عملية الفتق الإربي لطفلي؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">L'âge idéal est généralement entre <strong>3 et 12 mois</strong>. Avant 3 mois, on attend parfois si la hernie est bien réductible et l'enfant se porte bien. Après 12 mois, on n'attend pas car le risque d'étranglement augmente avec l'âge. Pour les <strong>prématurés</strong>, l'intervention peut être différée jusqu'à la sortie de néonatologie si la hernie est réductible. En cas de hernie <strong>déjà étranglée</strong> ou non réductible, l'opération est <strong>immédiate</strong> quel que soit l'âge. La chirurgie est réalisée sous anesthésie générale en ambulatoire (sortie le jour même ou le lendemain).</p>
+          <p class="ar">السن المثالي عادة بين <strong>3 و 12 شهرًا</strong>. قبل 3 أشهر، ننتظر أحيانًا إذا كان الفتق قابلًا للإرجاع جيدًا والطفل بصحة جيدة. بعد 12 شهرًا، لا ننتظر لأن خطر الاختناق يزداد مع العمر. لل<strong>خدج</strong>، قد يُؤجل التدخل حتى خروجهم من حاضنة الأطفال إذا كان الفتق قابلًا للإرجاع. في حالة فتق <strong>مختنق بالفعل</strong> أو غير قابل للإرجاع، العملية <strong>فورية</strong> بغض النظر عن العمر. تُجرى الجراحة تحت تخدير عام في العيادة الخارجية (الخروج في نفس اليوم أو اليوم التالي).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">👦 Pourquoi les garçons sont-ils plus touchés que les filles ?</span>
+          <span class="ar">👦 لماذا الذكور أكثر تأثرًا من الإناث؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La hernie inguinale est 6 fois plus fréquente chez les garçons car le <strong>canal péritonéo-vaginal</strong> (canal de Nück) est impliqué dans la descente des testicules des testicules vers les bourses pendant la grossesse. Normalement, ce canal se ferme avant la naissance. S'il reste ouvert, l'intestin peut y descendre et former une hernie. Chez la fille, ce canal est moins développé car il n'y a pas de descente testiculaire. Cependant, les filles peuvent aussi avoir une hernie inguinale, et chez elles le risque d'étranglement d'un <strong>ovaire</strong> (au lieu d'un intestin) est plus élevé, ce qui rend la prise en charge tout aussi urgente.</p>
+          <p class="ar">الفتق الإربي أكثر شيوعًا 6 مرات عند الذكور لأن <strong>القناة البريتونية المهبلية</strong> (قناة نوك) مشاركة في نزول الخصيتين نحو الصفن أثناء الحمل. عادة، تُغلق هذه القناة قبل الولادة. إذا بقيت مفتوحة، يمكن للأمعاء أن تنزل فيها وتُشكل فتقًا. عند الأنثى، هذه القناة أقل تطورًا لأنه لا يوجد نزول خصيتين. ومع ذلك، يمكن للإناث أيضًا الإصابة بفتق إربي، وعندهن يكون خطر اختناق <strong>المبيض</strong> (بدل الأمعاء) أعلى، مما يجعل التكفل بنفس الاستعجال.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🏥 L'opération se fait-elle en ambulatoire ou faut-il hospitaliser mon enfant ?</span>
+          <span class="ar">🏥 هل تُجرى العملية في العيادة الخارجية أم يجب استشفاء طفلي؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Dans la grande majorité des cas, la <strong>herniorraphie est réalisée en ambulatoire</strong> : l'enfant arrive le matin à jeun, est opéré sous anesthésie générale, et rentre chez lui le jour même ou le lendemain matin. L'hospitalisation de 24 heures est parfois préférée pour les <strong>nourrissons de moins de 3 mois</strong> ou en cas de <strong>hernie bilatérale</strong>. En cas d'<strong>étranglement</strong> nécessitant une résection intestinale, l'hospitalisation peut durer 3 à 7 jours. La technique est mini-invasive (petite incision à l'aine ou laparoscopie) et les suites sont généralement très simples.</p>
+          <p class="ar">في الغالبية العظمى من الحالات، <strong>يُجرى ترميم الفتق في العيادة الخارجية</strong>: يأتي الطفل صباحًا ببطن فارغ، يُجرى له التدخل تحت تخدير عام، ويعود إلى بيته في نفس اليوم أو صباح اليوم التالي. الاستشفاء لمدة 24 ساعة يُفضّل أحيانًا لل<strong>رضع دون 3 أشهر</strong> أو في حالة <strong>فتق ثنائي الجانب</strong>. في حالة <strong>الاختناق</strong> المستلزم لاستئصال جزء من الأمعاء، قد تمتد الاستشفاء 3 إلى 7 أيام. التقنية قليلة التوغل (شق صغير في الفخذ أو تنظير) والنتائج عادة بسيطة جدًا.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🩹 Combien de temps dure la convalescence après l'opération ?</span>
+          <span class="ar">🩹 كم تستمر فترة النقاهة بعد العملية؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La récupération est <strong>rapide</strong>. La plupart des enfants reprennent leurs activités normales en <strong>3 à 5 jours</strong>. Le pansement est retiré à J2-J3. La douleur est modérée et contrôlée par du paracétamol. Il faut éviter les bains (douche autorisée) et les efforts violents (course, saut, port de charges lourdes) pendant <strong>2 semaines</strong>. Le retour à la crèche ou à l'école est possible dès le 3e jour si l'enfant se sent bien. Une visite de contrôle est prévue à J7-J10. Les suites opératoires sont simples dans plus de 95 % des cas. Le risque de récidive est très faible (moins de 1 %).</p>
+          <p class="ar">التعافي <strong>سريع</strong>. معظم الأطفال يستأنفون أنشطتهم الطبيعية خلال <strong>3 إلى 5 أيام</strong>. تُزال الضمادة في اليوم 2-3. الألم معتدل ويُسيطر عليه بالباراسيتامول. يجب تجنب الحمامات (الاستحمام مسموح) والجهود العنيفة (الجري، القفز، حمل الأثقال) لمدة <strong>أسبوعين</strong>. العودة إلى الحضانة أو المدرسة ممكنة من اليوم الثالث إذا شعر الطفل بالتحسن. زيارة مراقبة مُبرمجة في اليوم 7-10. النتائج بعد العملية بسيطة في أكثر من 95% من الحالات. خطر التكرار ضئيل جدًا (أقل من 1%).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🔄 Ma fille a une hernie — doit-on aussi vérifier l'autre côté ?</span>
+          <span class="ar">🔄 ابنتي مصابة بفتق — هل يجب فحص الجانب الآخر أيضًا؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, et cela vaut aussi pour les garçons. Environ <strong>10 à 20 %</strong> des hernies inguinales sont bilatérales (des deux côtés). Parfois, la hernie de l'autre côté n'est pas visible au début mais peut apparaître plus tard (hernie métachrone). Lors de l'intervention, le chirurgien pédiatre explore systématiquement le <strong>canal controlatéral</strong> (de l'autre côté), surtout chez les enfants de moins de 1 an et en cas de hernie préexistante bilatérale dans la famille. Si le canal est ouvert, il est fermé préventivement lors de la même intervention pour éviter une seconde opération. Cette exploration peut se faire par laparoscopie.</p>
+          <p class="ar">نعم، وهذا ينطبق أيضًا على الذكور. حوالي <strong>10 إلى 20%</strong> من حالات الفتق الإربي ثنائية الجانب (من الجانبين). أحيانًا، فتق الجانب الآخر غير مرئي في البداية لكنه قد يظهر لاحقًا (فتق متأخر). أثناء التدخل، يستكشف جراح الأطفال <strong>القناة المقابلة</strong> (الجانب الآخر) بشكل منهجي، خاصة عند الأطفال دون سنة واحدة وفي حالة وجود فتق ثنائي سابق في العائلة. إذا كانت القناة مفتوحة، يُغلقها وقائيًا خلال نفس التدخل لتجنب عملية ثانية. يمكن إجراء هذا الاستكشاف بالمنظار.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">🍼 Mon bébé est prématuré et a une hernie — est-ce plus risqué ?</span>
+          <span class="ar">🍼 طفلي خديج وعنده فتق — هل الخطر أكبر؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Les <strong>prématurés</strong> ont un risque de hernie inguinale beaucoup plus élevé (jusqu'à <strong>30 %</strong> chez les très petits prématurés de moins de 1 kg) car le canal péritonéo-vaginal a moins de temps pour se fermer in utero. Le risque d'<strong>étranglement</strong> est aussi plus élevé chez le prématuré. L'intervention est généralement programmée <strong>avant la sortie de l'unité de néonatologie</strong> si la hernie est symptomatique, ou peu après à domicile. L'anesthésie générale est sûre même chez le prématuré à condition qu'il soit stabilisé respiratoirement. Le suivi postopératoire est plus vigilant.</p>
+          <p class="ar">ال<strong>خدج</strong> لديهم خطر فتق إربي أعلى بكثير (حتى <strong>30%</strong> عند الخدج الصغار جدًا دون 1 كغ) لأن القناة البريتونية المهبلية لم يكن لديها الوقت الكافي للإغلاق داخل الرحم. خطر <strong>الاختناق</strong> أيضًا أعلى عند الخدج. يُبرمج التدخل <strong>قبل خروج وحدة حديثي الولادة</strong> إذا كان الفتق مصحوبًا بأعراض، أو بعد فترة قصيرة في المنزل. التخدير العام آمن حتى عند الخدج بشرط استقرارهم تنفسيًا. المتابعة بعد العملية أكثر حذرًا.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="fr">📞 Comment prendre rendez-vous avec le Dr Ziane Khodja ?</span>
+          <span class="ar">📞 كيف أحجز موعدًا مع الدكتورة زيان خوجة؟</span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Vous pouvez prendre rendez-vous par <strong>WhatsApp au +213 558 45 60 19</strong> ou en appelant directement. Le cabinet du Dr Ziane Khodja est situé à <strong>Ouled Moussa, Boumerdès</strong>. Pour une hernie inguinale, la consultation permet de confirmer le diagnostic par examen clinique et de programmer l'intervention chirurgicale. En cas de suspicion d'étranglement, ne perdez pas de temps à prendre rendez-vous : présentez-vous directement aux urgences. Nous assurons la prise en charge complète : consultation, chirurgie ambulatoire et suivi postopératoire.</p>
+          <p class="ar">يمكنكم حجز موعد عبر <strong>واتساب على +213 558 45 60 19</strong> أو بالاتصال المباشر. عيادة الدكتورة زيان خوجة تقع في <strong>أولاد موسى، بومرداس</strong>. للفتق الإربي، تسمح الاستشارة بتأكيد التشخيص بالفحص السريري وبرمجة التدخل الجراحي. في حالة الاشتباه بالاختناق، لا تضيعوا الوقت في حجز موعد: اذهبوا فورًا إلى الطوارئ. نضمن التكفل الكامل: الاستشارة، الجراحة في العيادة الخارجية والمتابعة بعد العملية.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA -->
   <section>
     <div class="wrap">
@@ -240,6 +371,18 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const chevron=btn.querySelector('.faq-chevron');
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight='0px';});
+  document.querySelectorAll('.faq-chevron').forEach(c=>c.style.transform='rotate(0deg)');
+  if(!isOpen){
+    btn.classList.add('active');
+    content.style.maxHeight=content.scrollHeight+'px';
+    chevron.style.transform='rotate(180deg)';
+  }
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

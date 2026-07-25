@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="robots" content="index, follow">
 <title>Brûlures chez l'enfant — Dr. Ziane Khodja | Chirurgie pédiatrique</title>
 <meta name="description" content="Brûlures chez l'enfant : classification, premiers soins, traitement chirurgical et récupération. Cabinet du Dr Ziane Khodja à Ouled Moussa, Boumerdès.">
-<link rel="canonical" href="https://drzianekhodja.vercel.app/brulures.html">
+<link rel="canonical" href="https://drzianekhodja.netlify.app/brulures.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet">
@@ -67,6 +63,18 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* FAQ Section */
+.faq-section{background:var(--bg-card);border-radius:var(--radius);padding:32px;margin-bottom:24px;border:1px solid var(--line);}
+.faq-section h2{font-size:1.4rem;margin-bottom:24px;color:var(--accent-blue);text-align:center;}
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:box-shadow .2s ease;}
+.faq-item:hover{box-shadow:0 4px 12px rgba(0,96,176,0.08);}
+.faq-question{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;font-weight:600;color:var(--ink);font-size:.95rem;border:none;background:none;width:100%;text-align:left;font-family:inherit;}
+.faq-question .faq-icon{font-size:1.2rem;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+.faq-question .faq-chevron{margin-left:auto;font-size:.85rem;color:var(--ink-soft);transition:transform .3s ease;}
+.faq-item.active .faq-chevron{transform:rotate(180deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px 0 64px;color:var(--ink-soft);line-height:1.7;font-size:.92rem;}
+.faq-item.active .faq-answer{max-height:500px;padding:0 22px 18px 64px;}
 </style>
 </head>
 <body class="lang-fr">
@@ -372,7 +380,122 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- FAQ -->
+  <section class="reveal">
+    <div class="wrap">
+      <div class="faq-section">
+        <h2 class="fr">❓ Questions fréquentes des parents</h2>
+        <h2 class="ar">❓ الأسئلة الشائعة من الأولياء</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">👶</span>
+            <span class="fr">La brûlure de mon bébé est petite — est-ce grave ?</span>
+            <span class="ar">حرق طفلي صغير — هل هو خطير؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Même une petite brûlure chez un bébé mérite une évaluation médicale car la peau infantile est très fine et fragile. Une brûlure de plus de 1 % de la surface corporelle, ou située au visage, aux mains, aux pieds ou aux organes génitaux, doit être vue en urgence. Ne sous-estimez jamais une brûlure chez un nourrisson.</p>
+            <p class="ar">حتى الحروق الصغيرة عند الرضيع تستدعي تقييمًا طبيًا لأن جلد الرضيع رقيق وهش للغاية. يجب معالجة الحروق التي تتجاوز 1% من مساحة الجسم، أو تلك الواقعة في الوجه أو اليدين أو القدمين أو الأعضاء التناسلية، على أنها طوارئ. لا تستهينوا أبدًا بالحروق عند الرضع.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">⚠️</span>
+            <span class="fr">Comment reconnaître une brûlure du 3e degré chez mon enfant ?</span>
+            <span class="ar">كيف أتعرف على حرق من الدرجة الثالثة عند طفلي؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Une brûlure du 3e degré se reconnaît à sa couleur blanche, noire ou brune, et au fait qu'elle est indolore car les nerfs sont détruits. Contrairement aux brûlures superficielles, il n'y a pas de cloques. La peau peut avoir une apparence de cuir ou de cire. C'est une urgence absolue nécessitant une prise en charge chirurgicale rapide.</p>
+            <p class="ar">يتم التعرف على الحرق من الدرجة الثالثة بلونه الأبيض أو الأسود أو البني، وكونه غير مؤلم لأن الأعصاب مدمرة. على عكس الحروق السطحية، لا توجد فقاعات. قد يبدو الجلد وكأنه جلد أو شمع. إنه طوارئ مطلقة تتطلب تدخلًا جراحيًا سريعًا.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🧊</span>
+            <span class="fr">Dois-je mettre de la glace sur la brûlure de mon enfant ?</span>
+            <span class="ar">هل يجب أن أضع الثلج على حرق طفلي؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr"><strong>Non, jamais de glace directement sur une brûlure !</strong> La glice peut causer une lésion par le froid (engelure) et aggraver les dommages tissulaires. La bonne pratique est de refroidir la brûlure sous l'eau du robinet tiède (15-25 °C) pendant 10 à 20 minutes. Cela stoppe la progression de la brûlure et soulage la douleur.</p>
+            <p class="ar"><strong>لا، أبدًا لا تضعوا الثلج مباشرة على الحرق!</strong> قد يسبب الثلج إصابة بالبرد (تجمد) ويزيد من تلف الأنسجة. الممارسة الصحيحة هي تبريد الحرق تحت ماء الصنبور الفاتر (15-25 درجة مئوية) لمدة 10 إلى 20 دقيقة. يوقف ذلك تقدم الحرق ويخفف الألم.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🏥</span>
+            <span class="fr">Quand faut-il emmener mon enfant aux urgences ?</span>
+            <span class="ar">متى يجب أن آخذ طفلي إلى الطوارئ؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Consultez les urgences immédiatement en cas de : brûlure au visage, au cou, aux mains, aux pieds ou aux organes génitaux ; brûlure circulaire autour d'un membre ; brûlure étendue (> 5 % de la surface corporelle) ; brûlure du 3e degré ; brûlure électrique ou chimique ; brûlure chez un nourrisson de moins de 1 an ; signes de choc ou inhalation de fumée.</p>
+            <p class="ar">اذهبوا إلى الطوارئ فورًا في حالة: حرق في الوجه أو الرقبة أو اليدين أو القدمين أو الأعضاء التناسلية؛ حرق دائري حول عضو؛ حرق واسع (> 5% من مساحة الجسم)؛ حرق من الدرجة الثالثة؛ حرق كهربائي أو كيميائي؛ حرق عند رضيع دون سنة واحدة؛ علامات الصدمة أو استنشاق الدخان.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🩹</span>
+            <span class="fr">Puis-je percer les cloques de la brûlure ?</span>
+            <span class="ar">هل يمكنني فقاعات الحرق؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr"><strong>Non, ne percez jamais les cloques !</strong> Les cloques forment une barrière naturelle de protection contre les infections. Les percer augmente le risque de surinfection bactérienne et peut retarder la cicatrisation. Si une cloque se rompt d'elle-même, nettoyez délicatement à l'eau et au savon, puis appliquez un pansement stérile.</p>
+            <p class="ar"><strong>لا، لا تفقّعوا الفقاعات أبدًا!</strong> تشكل الفقاعات حاجزًا طبيعيًا للحماية من العدوى. فقعها يزيد من خطر العدوى البكتيرية الثانوية وقد يؤخر التئام الجرح. إذا انفجرت الفقاعة من تلقاء نفسها، نظفوا بلطف بالماء والصابون، ثم ضعوا ضمادة معقمة.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">⏱️</span>
+            <span class="fr">Combien de temps dure la cicatrisation d'une brûlure ?</span>
+            <span class="ar">كم تستغرق فترة التئام الحرق؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">La durée dépend de la profondeur : 3 à 6 jours pour une brûlure du 1er degré ; 7 à 14 jours pour une brûlure du 2e degré superficiel ; 3 à 6 semaines pour une brûlure du 2e degré profond. Les brûlures du 3e degré nécessitent une greffe de peau et peuvent prendre plusieurs mois à cicatriser complètement, avec un suivi à long terme pour prévenir les séquelles.</p>
+            <p class="ar">تعتمد المدة على العمق: 3 إلى 6 أيام للحرق من الدرجة الأولى؛ 7 إلى 14 يومًا للحرق من الدرجة الثانية السطحية؛ 3 إلى 6 أسابيع للحرق من الدرجة الثانية العميقة. تتطلب الحروق من الدرجة الثالثة زراعة جلد وقد تستغرق عدة أشهر للالتئام الكامل، مع متابعة طويلة الأمد للوقاية من العواقب.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🧴</span>
+            <span class="fr">Puis-je mettre du beurre ou de la pommade sur la brûlure ?</span>
+            <span class="ar">هل يمكنني وضع الزبدة أو المرهم على الحرق؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr"><strong>Non, absolument pas !</strong> Le beurre, l'huile, le dentifrice ou les pommades non prescrites peuvent emprisonner la chaleur, favoriser l'infection et compliquer l'évaluation médicale. La seule chose à faire est de refroidir à l'eau tiède, puis de couvrir avec un drap propre et humide en attendant les soins médicaux.</p>
+            <p class="ar"><strong>لا، مطلقًا لا!</strong> قد تحبس الزبدة، الزيت، معجون الأسنان أو المراهم غير الموصوفة الحرارة، وتشجع العدوى، وتعقد التقييم الطبي. الشيء الوحيد الذي يجب فعله هو التبريد بالماء الفاتر، ثم تغطية المنطقة بمنديل نظيف ورطب في انتظار العناية الطبية.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🩺</span>
+            <span class="fr">Mon enfant aura-t-il des cicatrices permanentes ?</span>
+            <span class="ar">هل سيكون لدى طفلي ندبات دائمة؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Les brûlures du 1er et 2e degré superficiel guérissent généralement sans cicatrice visible. Les brûlures du 2e degré profond et du 3e degré peuvent laisser des cicatrices. Une prise en charge précoce et adaptée (greffe de peau, vêtements de compression, kinésithérapie) minimise considérablement les séquelles esthétiques et fonctionnelles. Le suivi régulier est essentiel.</p>
+            <p class="ar">تلتئم الحروق من الدرجة الأولى والثانية السطحية عادةً بدون ندبات مرئية. قد تترك الحروق من الدرجة الثانية العميقة والثالثة ندبات. يقلل التكفل المبكر والمناسب (زراعة الجلد، الملابس الضاغطة، العلاج الطبيعي) بشكل كبير من العواقب الجمالية والوظيفية. المتابعة المنتظمة ضرورية.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- CTA -->
   <section>
     <div class="wrap">
       <div class="cta-box">
@@ -388,8 +511,6 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
-</main>
-
 <footer>
   <p class="fr">© Cabinet Médical de Chirurgie Pédiatrique — Dr Ziane Khodja Djamila · <a href="index.html">Retour à l'accueil</a></p>
   <p class="ar">© عيادة جراحة الأطفال — د. زيان خوجة جميلة · <a href="index.html">العودة إلى الصفحة الرئيسية</a></p>
@@ -403,6 +524,15 @@ function toggleLang(){
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const wasActive = item.classList.contains('active');
+  // Fermer tous les items
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+  // Ouvrir celui-ci s'il n'était pas déjà ouvert
+  if (!wasActive) item.classList.add('active');
+}
 </script>
 </body>
 </html>

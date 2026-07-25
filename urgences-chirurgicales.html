@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="robots" content="index, follow">
 <title>Urgences chirurgicales pédiatriques — Dr. Ziane Khodja | Chirurgie pédiatrique</title>
 <meta name="description" content="Urgences chirurgicales pédiatriques : appendicite, intussusception, étranglement herniaire, traumatismes. Cabinet du Dr Ziane Khodja à Ouled Moussa, Boumerdès.">
-<link rel="canonical" href="https://drzianekhodja.vercel.app/urgences-chirurgicales.html">
+<link rel="canonical" href="https://drzianekhodja.netlify.app/urgences-chirurgicales.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet">
@@ -67,6 +63,18 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* FAQ Section */
+.faq-section{background:var(--bg-card);border-radius:var(--radius);padding:32px;margin-bottom:24px;border:1px solid var(--line);}
+.faq-section h2{font-size:1.4rem;margin-bottom:24px;color:var(--accent-blue);text-align:center;}
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:box-shadow .2s ease;}
+.faq-item:hover{box-shadow:0 4px 12px rgba(0,96,176,0.08);}
+.faq-question{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;font-weight:600;color:var(--ink);font-size:.95rem;border:none;background:none;width:100%;text-align:left;font-family:inherit;}
+.faq-question .faq-icon{font-size:1.2rem;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+.faq-question .faq-chevron{margin-left:auto;font-size:.85rem;color:var(--ink-soft);transition:transform .3s ease;}
+.faq-item.active .faq-chevron{transform:rotate(180deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px 0 64px;color:var(--ink-soft);line-height:1.7;font-size:.92rem;}
+.faq-item.active .faq-answer{max-height:500px;padding:0 22px 18px 64px;}
 </style>
 </head>
 <body class="lang-fr">
@@ -338,7 +346,130 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
-  <!-- CTA -->
+  
+  <!-- FAQ -->
+  <section class="reveal">
+    <div class="wrap">
+      <div class="faq-section">
+        <h2 class="fr">❓ Questions fréquentes des parents</h2>
+        <h2 class="ar">❓ الأسئلة الشائعة من الأولياء</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🤢</span>
+            <span class="fr">Mon enfant a mal au ventre et vomit — est-ce une urgence chirurgicale ?</span>
+            <span class="ar">طفلي يعاني من ألم بطني وقيء — هل هو طارئ جراحي؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Toute douleur abdominale associée à des vomissements répétés, surtout s'ils sont bilieux (verts) ou sanglants, doit être évaluée en urgence. Cela peut traduire une appendicite, une intussusception, un volvulus ou une occlusion intestinale. Ne donnez rien à manger ni à boire à l'enfant et consultez immédiatement.</p>
+            <p class="ar">يجب تقييم أي ألم بطني مصحوب بقيء متكرر، خاصة إذا كان صفراويًا (أخضر) أو دمويًا، على أنه طارئ. قد يشير ذلك إلى التهاب الزائدة الدودية، التلسق المعوي، التواء الأمعاء أو انسداد الأمعاء. لا تعطوا الطفل طعامًا ولا شرابًا واستشيروا فورًا.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">⚠️</span>
+            <span class="fr">Comment reconnaître une hernie étranglée chez mon enfant ?</span>
+            <span class="ar">كيف أتعرف على الفتق المختنق عند طفلي؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Une hernie étranglée se manifeste par une <strong>gonflement dur et douloureux</strong> à l'aine ou au scrotum, qui ne se réduit pas quand l'enfant est calme ou allongé. Elle est souvent associée à des vomissements et un arrêt du transit. C'est une urgence absolue car le risque de nécrose intestinale est réel. Ne tentez pas de la rédui
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+  if (!wasActive) item.classList.add('active');
+}
+re vous-même.</p>
+            <p class="ar">يتجلى الفتق المختنق ب<strong>تورم صلب ومؤلم</strong> في الفخذ أو الصفن، لا يتراجع عندما يكون الطفل هادئًا أو مستلقيًا. غالبًا ما يصحبه قيء وتوقف العبور. إنه طارئ مطلق لأن خطر نخر الأمعاء حقيقي. لا تحاولوا إرجاعه بأنفسكم.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🔵</span>
+            <span class="fr">Mon fils a soudainement mal aux testicules — que faire ?</span>
+            <span class="ar">ابني فجأة يعاني من ألم في الخصيتين — ماذا أفعل؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Une <strong>douleur soudaine et intense du scrotum</strong> chez un garçon est une urgence absolue jusqu'à preuve du contraire. Cela peut être une torsion testiculaire, où le cordon spermatique se tord et coupe la vascularisation. Au-delà de <strong>6 heures</strong>, le testicule risque d'être irrémédiablement perdu. Emmenez votre enfant aux urgences immédiatement, sans attendre.</p>
+            <p class="ar"><strong>ألم مفاجئ وشديد في الصفن</strong> عند صبي هو طارئ مطلق حتى يثبت العكس. قد يكون التواء الخصية، حيث يلتف الحبل المنوي ويقطع ترويته الدموية. بعد <strong>6 ساعات</strong>، يخسر الخصية بشكل لا رجعة فيه. اذهبوا إلى الطوارئ فورًا، دون انتظار.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🍬</span>
+            <span class="fr">Mon enfant a avalé un objet — dois-je aller aux urgences ?</span>
+            <span class="ar">ابتلع طفلي جسمًا — هل يجب أن أذهب إلى الطوارئ؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Si l'objet est passé dans l'œsophage et que l'enfant ne tousse pas, ne s'étouffe pas et respire normalement, consultez rapidement mais ce n'est pas toujours une urgence vitale. En revanche, si l'enfant <strong>tousse, a du mal à respirer, devient bleu ou ne peut plus parler</strong>, c'est une obstruction des voies aériennes — urgence vitale. Appelez les secours immédiatement.</p>
+            <p class="ar">إذا مر الجسم عبر المريء ولم يسعل الطفل ولم يختنق ويتنفس بشكل طبيعي، استشيروا بسرعة لكنه ليس دائمًا طارئًا حيويًا. على العكس، إذا <strong>سعل الطفل، وصعب عليه التنفس، أصبح أزرق أو لم يعد يستطيع الكلام</strong>، فهذا انسداد في المجاري التنفسية — طارئ حيوي. اتصلوا بالإسعاف فورًا.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🚫</span>
+            <span class="fr">Puis-je donner à manger ou à boire à mon enfant avant les urgences ?</span>
+            <span class="ar">هل يمكنني إعطاء طفلي طعامًا أو شرابًا قبل الطوارئ؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr"><strong>Non, absolument pas !</strong> En cas d'urgence chirurgicale suspectée, il est crucial de garder l'estomac vide. Manger ou boire augmente le risque d'aspiration pendant l'anesthésie générale, ce qui peut être mortel. Même si l'enfant a soif ou faim, attendez l'avis médical. Notez l'heure du dernier repas pour informer l'équipe médicale.</p>
+            <p class="ar"><strong>لا، مطلقًا لا!</strong> في حالة الاشتباه بطارئ جراحي، من الضروري إبقاء المعدة فارغة. الأكل أو الشرب يزيد من خطر الاستنشاق أثناء التخدير العام، وهو ما قد يكون قاتلًا. حتى لو كان الطفل عطشانًا أو جائعًا، انتظروا الرأي الطبي. سجلوا وقت آخر وجبة لإبلاغ الفريق الطبي.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">⏱️</span>
+            <span class="fr">Combien de temps puis-je attendre avant de consulter ?</span>
+            <span class="ar">كم من الوقت يمكنني الانتظار قبل الاستشارة؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">En chirurgie pédiatrique, <strong>chaque minute compte</strong>. Une appendicite peut perforer en 24 à 48 heures, une torsion testiculaire cause une nécrose irréversible après 6 heures, et un corps étranger dans les voies aériennes peut être fatal en minutes. Si vous suspectez une urgence chirurgicale, ne temporisez pas. Mieux vaut une consultation inutile qu'un retard dramatique.</p>
+            <p class="ar">في الجراحة الأطفال، <strong>كل دقيقة تهم</strong>. قد يثقب التهاب الزائدة الدودية خلال 24 إلى 48 ساعة، يسبب التواء الخصية نخرًا لا رجعة فيه بعد 6 ساعات، والجسم الغريب في المجاري التنفسية قد يكون قاتلًا في دقائق. إذا اشتبهتم بطارئ جراحي، لا تتأخروا. الاستشارة غير الضرورية أفضل من التأخر المأساوي.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">🏥</span>
+            <span class="fr">L'opération se fait-elle en urgence ou peut-on attendre ?</span>
+            <span class="ar">هل العملية تتم على وجه السرعة أم يمكن الانتظار؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Cela dépend de la pathologie. Certaines urgences nécessitent une intervention <strong>immédiate</strong> (torsion testiculaire, corps étranger des voies aériennes, hémorragie massive). D'autres peuvent attendre quelques heures avec une surveillance rapprochée (appendicite non perforée, hernie réductible). Le chirurgien pédiatre évalue le degré d'urgence et programme l'intervention en conséquence.</p>
+            <p class="ar">يعتمد ذلك على المرض. بعض الطوارئ تتطلب تدخلًا <strong>فوريًا</strong> (التواء الخصية، الجسم الغريب في المجاري التنفسية، النزيف الكبير). أخرى يمكن الانتظار بضع ساعات مع مراقبة دقيقة (التهاب الزائدة غير المثقوب، الفتق القابل للإرجاع). يقيم جراح الأطفال درجة الطارئ ويخطط للتدخل وفقًا لذلك.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-icon">👶</span>
+            <span class="fr">Les nouveau-nés peuvent-ils aussi avoir des urgences chirurgicales ?</span>
+            <span class="ar">هل يمكن للمواليد الجدد أيضًا أن يصابوا بطوارئ جراحية؟</span>
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p class="fr">Oui, et elles sont souvent <strong>plus difficiles à détecter</strong> car le nourrisson ne peut pas exprimer sa douleur verbalement. Les signes d'alerte chez le nouveau-né incluent : refus de tétée, pleurs aigus et persistants, vomissements bilieux, distension abdominale, pâleur ou cyanose, et fièvre ou hypothermie. Tout changement inhabituel chez un nourrisson mérite une évaluation médicale rapide.</p>
+            <p class="ar">نعم، وهي غالبًا <strong>أصعب في الكشف</strong> لأن الرضيع لا يستطيع التعبير عن ألمه لفظيًا. تشمل علامات الإنذار عند المولود: رفض الرضاعة، بكاء حاد ومستمر، قيء صفراوي، انتفاخ البطن، شحوب أو ازرقاق، وحمى أو انخفاض درجة الحرارة. أي تغيير غير معتاد عند الرضيع يستحق تقييمًا طبيًا سريعًا.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- CTA -->
   <section>
     <div class="wrap">
       <div class="cta-box">
@@ -369,6 +500,13 @@ function toggleLang(){
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+  if (!wasActive) item.classList.add('active');
+}
 </script>
 </body>
 </html>

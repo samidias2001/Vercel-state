@@ -64,6 +64,21 @@ section{padding:48px 0;}
 .cta-box h2{color:var(--white);}.cta-box p{color:#E0ECF8;}
 footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);background:var(--white);}
 footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
+
+/* FAQ Styles */
+.faq-section h2{font-family:'Fraunces',serif;color:var(--ink);text-align:center;margin-bottom:32px;font-size:clamp(1.4rem,3vw,1.8rem);}
+body.lang-ar .faq-section h2{font-family:'Markazi Text',serif;}
+.faq-item{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:16px;overflow:hidden;}
+.faq-btn{width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);gap:16px;}
+.faq-btn:hover{background:var(--accent-blue-light);}
+.faq-chevron{transition:transform .3s;color:var(--accent-blue);font-size:1.2rem;flex-shrink:0;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 24px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:20px;margin:0;}
+.faq-content strong{color:var(--ink);}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1.05rem;}
+
+.faq-icon{font-size:1.3rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;width:auto;height:auto;flex-shrink:0;}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
@@ -346,6 +361,164 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-soft);}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="reveal faq-section">
+    <div class="wrap">
+      <h2 class="fr">Questions fréquemment posées (FAQ)</h2>
+      <h2 class="ar">الأسئلة الشائعة</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">❓</span>
+            <span class="fr">Qu'est-ce qu'une malformation congénitale exactement ?</span>
+            <span class="ar">ما هو التشوه الخلقي بالضبط؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">C'est une <strong>anomalie structurelle ou fonctionnelle</strong> présente dès la naissance, résultant d'un défaut du développement embryonnaire. Elle peut être d'origine génétique, environnementale ou multifactorielle. Elle touche environ 1 à 3 % des nouveau-nés dans le monde.</p>
+          <p class="ar">هو <strong>شذوص بنيوي أو وظيفي</strong> موجود منذ الولادة، ناتج عن خلل في تطور الجنين. قد يكون سببه وراثي أو بيئي أو متعدد العوامل. يصيب حوالي 1 إلى 3% من المواليد الجدد في العالم.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">👁️</span>
+            <span class="fr">Peut-on détecter une malformation avant la naissance ?</span>
+            <span class="ar">هل يمكن اكتشاف التشوه قبل الولادة؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, grâce à l'<strong>échographie obstétricale</strong>, l'échographie cardiaque fœtale, l'IRM fœtale et les examens génétiques (amniocentèse). Le dépistage prénatal permet d'anticiper la prise en charge dès la naissance et d'organiser l'accouchement dans un centre spécialisé si nécessaire.</p>
+          <p class="ar">نعم، من خلال <strong>الموجات فوق الصوتية التوليدية</strong>، الموجات فوق الصوتية القلبية للجنين، التصوير بالرنين المغناطيسي للجنين والفحوصات الوراثية (بزل السائل الأمنيوسي). يسمح الكشف قبل الولادة بالتكفل الفوري عند الولادة وتنظيم الولادة في مركز متخصص إذا لزم الأمر.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">📊</span>
+            <span class="fr">Quelles sont les malformations les plus fréquentes ?</span>
+            <span class="ar">ما هي التشوهات الأكثر شيوعًا؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Les <strong>cardiopathies congénitales</strong> sont les plus fréquentes (8 pour 1 000 naissances), suivies des malformations du tube neural (spina bifida), des malformations urogénitales et digestives. Chaque année, environ 8 millions d'enfants naissent avec une malformation congénitale significative dans le monde.</p>
+          <p class="ar"><strong>أمراض القلب الخلقية</strong> هي الأكثر شيوعًا (8 لكل 1000 ولادة)، تليها تشوهات الأنبوب العصبي (الشق الشوكي)، ثم التشوهات البولية التناسلية والهضمية. كل عام، يولد حوالي 8 ملايين طفل مصاب بتشوه خلقي كبير في العالم.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">✂️</span>
+            <span class="fr">Toutes les malformations nécessitent-elles une opération ?</span>
+            <span class="ar">هل كل التشوهات تتطلب عملية جراحية؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Non. Certaines malformations bénignes peuvent être <strong>surveillées sans intervention</strong>. D'autres nécessitent une chirurgie urgente dès la naissance (œsophage atrésique, gastroschisis, hernie diaphragmatique), tandis que certaines peuvent être opérées de manière programmée (fissure labio-palatine, hernie inguinale). Le chirurgien pédiatre évalue chaque cas individuellement.</p>
+          <p class="ar">لا. بعض التشوهات الحميدة يمكن <strong>مراقبتها بدون تدخل</strong>. أخرى تتطلب جراحة طارئة منذ الولادة (انسداد المريء، انشقاق البطن، الفتق الحجابي)، بينما يمكن جدولة بعضها (الشفة الأرنبية، الفتق الإربي). يقوم جراح الأطفال بتقييم كل حالة على حدة.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🛡️</span>
+            <span class="fr">L'acide folique peut-il prévenir les malformations ?</span>
+            <span class="ar">هل حمض الفوليك يمكن أن يمنع التشوهات؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, la <strong>supplémentation en acide folique</strong> avant la conception et pendant le premier trimestre réduit de 50 à 70 % le risque de malformations du tube neural (spina bifida, anencéphalie). C'est pourquoi il est recommandé à toutes les femmes en âge de procréer de prendre 400 µg/jour d'acide folique.</p>
+          <p class="ar">نعم، <strong>التكميل بحمض الفوليك</strong> قبل الحمل وخلال الثلث الأول يقلل خطر تشوهات الأنبوب العصبي بنسبة 50 إلى 70% (الشق الشوكي، انعدام الدماغ). لذلك يُنصح به لجميع النساء في سن الإنجاب بجرعة 400 ميكروغرام يوميًا.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">📈</span>
+            <span class="fr">Quel est le pronostic après une chirurgie de malformation congénitale ?</span>
+            <span class="ar">ما هو التشخيص بعد جراحة التشوه الخلقي؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Le pronostic dépend du type et de la gravité de la malformation. Grâce aux progrès chirurgicaux et néonatals, <strong>85 % des enfants opérés survivent</strong> et mènent une vie normale à l'âge adulte. Un suivi régulier tout au long de la croissance est indispensable pour détecter les complications tardives.</p>
+          <p class="ar">يعتمد التشخيص على نوع وشدة التشوه. بفضل التقدم الجراحي وحديثي الولادة، <strong>85% من الأطفال الذين خضعوا للعملية يبقون على قيد الحياة</strong> ويعيشون حياة طبيعية في سن الرشد. المتابعة الدورية طوال النمو ضرورية للكشف عن المضاعفات المتأخرة.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">⏰</span>
+            <span class="fr">La chirurgie est-elle réalisée dès la naissance ?</span>
+            <span class="ar">هل يتم إجراء الجراحة منذ الولادة؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Certaines malformations vitales nécessitent une <strong>intervention urgente dès les premières heures de vie</strong> (œsophage atrésique, hernie diaphragmatique, gastroschisis). D'autres, comme la fissure labio-palatine, sont opérées à des âges précis (3 mois pour la lèvre, 12-18 mois pour le palais). Le timing est déterminé par la nature de la malformation.</p>
+          <p class="ar">بعض التشوهات الحيوية تتطلب <strong>تدخلًا طارئًا في الساعات الأولى من الحياة</strong> (انسداد المريء، الفتق الحجابي، انشقاق البطن). أخرى مثل الشفة الأرنبية تُجرى في أعمار محددة (3 أشهر للشفة، 12-18 شهرًا للحنك). يحدد التوقيت طبيعة التشوه.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">👥</span>
+            <span class="fr">Quelle équipe médicale suit mon enfant ?</span>
+            <span class="ar">ما هو الفريق الطبي الذي يتابع طفلي؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La prise en charge est <strong>pluridisciplinaire</strong> : chirurgien pédiatre, pédiatre néonatologiste, anesthésiste-réanimateur pédiatre, généticien, radiologue pédiatre, kinésithérapeute, nutritionniste, psychologue et assistant social. Cette approche collaborative garantit une prise en charge globale de l'enfant et de sa famille.</p>
+          <p class="ar">التكفل <strong>متعدد التخصصات</strong>: جراح الأطفال، طبيب حديثي الولادة، أخصائي التخدير والإنعاش لدى الأطفال، أخصائي الوراثة، أخصائي الأشعة لدى الأطفال، أخصائي العلاج الطبيعي، أخصائي التغذية، الأخصائي النفسي والأخصائي الاجتماعي. يضمن هذا النهج التعاوني تكفلًا شاملاً للطفل وعائلته.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🔧</span>
+            <span class="fr">Y a-t-il un suivi à long terme après l'opération ?</span>
+            <span class="ar">هل هناك متابعة على المدى الطويل بعد العملية؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, le suivi est <strong>indispensable tout au long de la croissance</strong> pour surveiller le développement, détecter les complications tardives (infections, obstructions, récidives) et préparer la transition vers la médecine adulte si nécessaire (cardiopathies, maladies rénales). Les contrôles incluent échographies, imagerie et évaluation psychomotrice.</p>
+          <p class="ar">نعم، المتابعة <strong>ضرورية طوال فترة النمو</strong> لمراقبة التطور، الكشف عن المضاعفات المتأخرة (العدوى، الانسدادات، الانتكاسات) والتحضير للانتقال إلى طب البالغين إذا لزم الأمر (أمراض القلب، أمراض الكلى). تتضمن الفحوصات الموجات فوق الصوتية، التصوير وتقييم النمو النفسي الحركي.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">📞</span>
+            <span class="fr">Comment prendre rendez-vous pour une consultation ?</span>
+            <span class="ar">كيف أحجز موعدًا للاستشارة؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Vous pouvez nous contacter par téléphone au <a href="tel:+213558456019"><strong>+213 558 45 60 19</strong></a> ou via WhatsApp pour prendre un rendez-vous. Une <strong>évaluation complète</strong> et un plan de traitement personnalisé vous seront proposés par notre équipe multidisciplinaire.</p>
+          <p class="ar">يمكنكم التواصل معنا عبر الهاتف <a href="tel:+213558456019"><strong>+213 558 45 60 19</strong></a> أو واتساب لحجز موعد. سيُقدم لكم <strong>تقييم شامل</strong> وخطة علاج مخصصة من قبل فريقنا متعدد التخصصات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section>
     <div class="wrap">
@@ -374,6 +547,12 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight=null;});
+  if(!isOpen){btn.classList.add('active');content.style.maxHeight=content.scrollHeight+'px';}
 }
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

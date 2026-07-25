@@ -117,6 +117,20 @@ footer p{font-size:.82rem;margin:0;color:var(--ink-muted);}
 /* ===== REVEAL ===== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.in{opacity:1;transform:none;}
+
+/* ===== FAQ ===== */
+.faq-section{padding:40px 0 60px;}
+.faq-item{background:var(--bg-white);border-radius:var(--radius);border:1px solid var(--line);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.faq-btn{width:100%;text-align:left;padding:18px 22px;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:.95rem;font-weight:600;color:var(--ink);gap:12px;transition:background .2s;}
+.faq-btn:hover{background:var(--primary-light);}
+.faq-chevron{transition:transform .3s ease;color:var(--primary);font-size:.85rem;}
+.faq-btn.active .faq-chevron{transform:rotate(180deg);}
+.faq-content{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 22px;color:var(--ink-soft);line-height:1.7;}
+.faq-content p{padding-bottom:18px;margin:0;font-size:.95rem;}
+.faq-content strong{color:var(--ink);}
+.faq-icon{font-size:1.3rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;width:auto;height:auto;flex-shrink:0;}
+body.lang-ar .faq-btn{font-family:'Tajawal',sans-serif;font-size:1rem;}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
 
 /* ===== SCROLL HEADER ===== */
@@ -342,6 +356,164 @@ header.scrolled .nav{padding:10px 24px;}
         <li><strong>متابعة النمو</strong> حتى نهاية المراهقة (خطر تشوه ثانوي)</li>
       </ul>
 
+      <section class="faq-section reveal">
+    <div class="wrap" style="max-width:860px;">
+      <h2 class="fr" style="text-align:center;margin-bottom:32px;">Questions fréquemment posées (FAQ)</h2>
+      <h2 class="ar" style="text-align:center;margin-bottom:32px;">الأسئلة الشائعة</h2>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">❓</span>
+            <span class="fr">Qu'est-ce que l'orthopédie pédiatrique exactement ?</span>
+            <span class="ar">ما هو تقويم العظام للأطفال بالضبط؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">C'est la branche de la chirurgie qui traite des affections du <strong>système musculo-squelettique chez l'enfant</strong>, du nourrisson à l'adolescent. Contrairement à l'adulte, l'enfant possède un squelette en croissance avec des cartilages de conjugaison (physe) qui nécessitent une prise en charge spécifique pour ne pas perturber sa croissance future.</p>
+          <p class="ar">هو فرع الجراحة الذي يعالج أمراض <strong>الجهاز العضلي الهيكلي عند الطفل</strong>، من الرضيع إلى المراهق. على عكس البالغ، يملك الطفل هيكلاً عظمياً نامياً مع غضاريف النمو (الفيز) التي تتطلب تكفلاً خاصاً حتى لا تُعطل نموه المستقبلي.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🦴</span>
+            <span class="fr">Quelle est la fracture la plus fréquente chez l'enfant ?</span>
+            <span class="ar">ما هو الكسر الأكثر شيوعاً عند الطفل؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La <strong>fracture de la clavicule</strong> est la plus fréquente, surtout chez le nouveau-né (traumatisme obstétrical) et l'enfant en bas âge. Elle guérit généralement très bien grâce au remodelage osseux naturel de l'enfant, souvent sans séquelle.</p>
+          <p class="ar"><strong>كسر الترقوة</strong> هو الأكثر شيوعاً، خاصة عند المولود الجديد (رضيض ولادي) والطفل الصغير. يشفى عادةً بشكل جيد جداً بفضل إعادة تشكيل العظم الطبيعية عند الطفل، غالباً بدون عواقب.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">👁️</span>
+            <span class="fr">Comment dépister précocement la dysplasie de la hanche ?</span>
+            <span class="ar">كيف يتم الكشف المبكر عن خلل تنسج الورك؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Le dépistage se fait par <strong>examen clinique systématique</strong> à la naissance (manœuvres de Barlow et Ortolani) et par <strong>échographie de la hanche à 6 semaines</strong> de vie. L'asymétrie des plis fessiers chez le nourrisson est un signe d'alerte important à ne pas négliger.</p>
+          <p class="ar">يتم الكشف من خلال <strong>الفحص السريري النظامي</strong> عند الولادة (مناورات بارلو وأورتولاني) و<strong>الموجات فوق الصوتية للورك عند 6 أسابيع</strong> من العمر. عدم تناظر ثنايا الأرداف عند الرضيع هو علامة تنبيه مهمة لا يجب إهمالها.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🦶</span>
+            <span class="fr">Le pied bot se soigne-t-il sans chirurgie ?</span>
+            <span class="ar">هل يُشفى القدم الحنفاء بدون جراحة؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Oui, dans la grande majorité des cas grâce à la <strong>méthode de Ponseti</strong> : une série de plâtres progressifs appliqués chaque semaine permet de corriger la déformation. Une petite <strong>tenotomie du tendon d'Achille</strong> (sous anesthésie locale) est parfois nécessaire. Le taux de succès dépasse 95 % si le traitement est débuté précocement.</p>
+          <p class="ar">نعم، في الغالبية العظمى من الحالات بفضل <strong>طريقة بونسيتي</strong>: سلسلة من الجبائر التدريجية توضع كل أسبوع تسمح بتصحيح التشوه. قد تكون <strong>قطع وتر العرقوب</strong> الصغير (تحت التخدير الموضعي) ضرورية أحياناً. نسبة النجاح تتجاوز 95% إذا بدأ العلاج مبكراً.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">📊</span>
+            <span class="fr">Quels sont les signes d'alerte d'une scoliose chez l'adolescent ?</span>
+            <span class="ar">ما هي علامات التنبيه للجنف عند المراهق؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Les principaux signes sont : <strong>asymétrie des épaules</strong> (une épaule plus haute que l'autre), <strong>déviation visible de la colonne</strong> en position debout, <strong>saillie d'une omoplate</strong> (aileron), et <strong>asymétrie de la taille</strong>. Le test de penché vers l'avant (test d'Adams) permet de visualiser une gibbosité dorsale.</p>
+          <p class="ar">العلامات الرئيسية هي: <strong>عدم تناظر الكتفين</strong> (كتف أعلى من الآخر)، <strong>انحراف ظاهر للعمود الفقري</strong> في وضعية الوقوف، <strong>بروز لوح كتف</strong> (جناح)، و<strong>عدم تناظر الخصر</strong>. اختبار الانحناء للأمام (اختبار آدامز) يسمح برؤية السنام الظهري.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">⏰</span>
+            <span class="fr">Combien de temps dure la consolidation d'une fracture chez l'enfant ?</span>
+            <span class="ar">كم تستمر عملية التئام الكسر عند الطفل؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La consolidation est beaucoup plus rapide chez l'enfant que chez l'adulte grâce à la <strong>capacité de remodelage osseux</strong>. En moyenne : 3 semaines pour le nourrisson, 4-6 semaines pour le jeune enfant, et 6-8 semaines pour l'adolescent. Les contrôles radiographiques permettent de confirmer la consolidation avant le retrait du plâtre.</p>
+          <p class="ar">الالتئام أسرع بكثير عند الطفل منه عند البالغ بفضل <strong>قدرة إعادة تشكيل العظم</strong>. في المتوسط: 3 أسابيع للرضيع، 4-6 أسابيع للطفل الصغير، و6-8 أسابيع للمراهق. المراقبة بالأشعة تسمح بالتأكد من التئام العظم قبل إزالة الجبيرة.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🏥</span>
+            <span class="fr">Quand consulter en urgence un orthopédiste pédiatrique ?</span>
+            <span class="ar">متى يجب استشارة أخصائي تقويم عظام أطفال بشكل طارئ؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Consultez en urgence en cas de : <strong>traumatisme avec déformation visible</strong>, <strong>impossibilité totale de bouger un membre</strong>, <strong>douleur intense persistante</strong> après une chute, <strong>gonflement important</strong> d'une articulation, ou <strong>fièvre associée à une boiterie</strong> (signe possible d'ostéomyélite ou d'arthrite septique).</p>
+          <p class="ar">استشرفوا بشكل طارئ في حالة: <strong>رضيض مع تشوه ظاهر</strong>، <strong>عجز تام عن تحريك طرف</strong>، <strong>ألم شديد مستمر</strong> بعد سقوط، <strong>تورم كبير</strong> لمفصل، أو <strong>حمى مصحوبة بعرج</strong> (علامة محتملة لالتهاب العظم أو المفصل الصديدي).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">👶</span>
+            <span class="fr">Mon enfant boite-t-il, est-ce grave ?</span>
+            <span class="ar">طفلي يعرج، هل هذا خطير؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La boiterie chez l'enfant est toujours un <strong>signe à prendre au sérieux</strong>. Elle peut révéler une simple entorse, mais aussi une infection osseuse (ostéomyélite), une tumeur, une dysplasie de hanche ou une maladie neurologique. Toute boiterie persistante de plus de 24-48 heures doit être évaluée par un spécialiste.</p>
+          <p class="ar">العرج عند الطفل هو دائماً <strong>علامة يجب أخذها على محمل الجد</strong>. قد يكشف عن التواء بسيط، لكن أيضاً عن عدوى عظمية (التهاب العظم)، أو ورم، أو خلل تنسج الورك، أو مرض عصبي. يجب تقييم أي عرج مستمر لأكثر من 24-48 ساعة من قبل أخصائي.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">🔧</span>
+            <span class="fr">La rééducation est-elle nécessaire après une fracture ?</span>
+            <span class="ar">هل إعادة التأهيل ضرورية بعد الكسر؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">La rééducation est souvent <strong>recommandée</strong> pour éviter la raideur, retrouver la force musculaire et réapprendre une marche normale. Elle est particulièrement importante après les fractures du coude (risque de raideur), de la jambe (reprise d'appui) et du poignet. Le kinésithérapeute travaille en lien avec le chirurgien pédiatre.</p>
+          <p class="ar">إعادة التأهيل موصى بها <strong>غالباً</strong> لتجنب الصلابة، واستعادة القوة العضلية، وإعادة تعلم المشي الطبيعي. هي مهمة بشكل خاص بعد كسور الكوع (خطر الصلابة)، والساق (العودة للوقوف)، والمعصم. يعمل أخصائي العلاج الطبيعي بالتنسيق مع جراح الأطفال.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span style="display:flex;align-items:center;gap:12px;flex:1;">
+            <span class="faq-icon">📞</span>
+            <span class="fr">Comment prendre rendez-vous pour une consultation ?</span>
+            <span class="ar">كيف أحجز موعداً للاستشارة؟</span>
+          </span>
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-content">
+          <p class="fr">Vous pouvez nous contacter par téléphone au <a href="tel:+213558456019"><strong>+213 558 45 60 19</strong></a> ou via WhatsApp. Le Dr Ziane Khodja reçoit au cabinet à <strong>Ouled Moussa, Boumerdès</strong> pour tout problème orthopédique pédiatrique : fractures, déformations, traumatismes et suivi post-opératoire.</p>
+          <p class="ar">يمكنكم التواصل معنا عبر الهاتف <a href="tel:+213558456019"><strong>+213 558 45 60 19</strong></a> أو واتساب. تستقبل الدكتورة زيان خوجة في العيادة ب<strong>أولاد موسى، بومرداس</strong> لأي مشكل تقويمي للأطفال: الكسور، التشوهات، الرضوض والمتابعة بعد العملية.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
       <div class="cta-box">
         <h3 class="fr">Vous suspectez une pathologie orthopédique chez votre enfant ?</h3>
         <h3 class="ar">تشتبهون في مرض تقويمي لدى طفلكم؟</h3>
@@ -356,8 +528,8 @@ header.scrolled .nav{padding:10px 24px;}
     </article>
   </div>
 
-</main>
 
+</main>
 <footer>
   <p class="fr">© Cabinet Médical de Chirurgie Pédiatrique — Dr Ziane Khodja Djamila · Ouled Moussa, Boumerdès</p>
   <p class="ar">© عيادة جراحة الأطفال — د. زيان خوجة جميلة · أولاد موسى، بومرداس</p>
@@ -368,6 +540,13 @@ function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
+}
+
+function toggleFaq(btn){
+  const content=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('active');
+  document.querySelectorAll('.faq-btn').forEach(b=>{b.classList.remove('active');b.nextElementSibling.style.maxHeight=null;});
+  if(!isOpen){btn.classList.add('active');content.style.maxHeight=content.scrollHeight+'px';}
 }
 
 // Scroll reveal
