@@ -1,10 +1,11 @@
 // ==========================================
 // Gestion du consentement des cookies
 // Cabinet Dr Ziane Khodja
-// Version 5.0 — GTM + RGPD + Tracking complet
+// Version 6.0 — GA4 direct + GTM + RGPD
 // ==========================================
 
 const COOKIE_NAME = "drzk_cookie_consent";
+const GA_ID = "G-S65YXQMJTX";
 
 // ── Lecture / écriture du consentement ──────────────────────────────────────
 
@@ -16,25 +17,38 @@ function setConsent(value) {
     localStorage.setItem(COOKIE_NAME, value);
 }
 
-// ── Communication avec Google Tag Manager ───────────────────────────────────
-// GTM est déjà chargé dans le <head>. On lui envoie des signaux via dataLayer.
+// ── Chargement de GA4 (après consentement uniquement) ───────────────────────
 
-function pushConsent(granted) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        event: granted ? "cookie_consent_accepted" : "cookie_consent_refused",
-        cookie_consent: granted ? "granted" : "denied"
-    });
+function loadGA4() {
+    if (window._ga4Loaded) return; // évite le double chargement
+    window._ga4Loaded = true;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(script);
+
+    script.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", GA_ID, { send_page_view: true });
+
+        // GA4 chargé → lancer le tracking
+        initTracking();
+    };
 }
 
-// ── Fonction utilitaire d'envoi d'événement ─────────────────────────────────
+// ── Fonction utilitaire d'envoi d'événement GA4 ─────────────────────────────
 
 function trackEvent(eventName, params) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+    if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, params || {});
+    }
 }
 
-// ── Initialisation du tracking ──────────────────────────────────────────────
+// ── Initialisation du tracking des clics ────────────────────────────────────
 
 function initTracking() {
 
@@ -62,10 +76,9 @@ function initTracking() {
         el.addEventListener("click", function() {
             var label = el.classList.contains("floating-wa")
                 ? "Bouton flottant WhatsApp"
-                : "Bouton WhatsApp " + (el.closest("section, footer, header") 
-                    ? (el.closest("footer") ? "footer" 
-                    : el.closest("header") ? "header" : "section")
-                    : "page");
+                : el.closest("footer")
+                    ? "WhatsApp footer"
+                    : "WhatsApp hero";
             trackEvent("click_whatsapp", {
                 event_category: "Contact",
                 event_label: label,
@@ -104,15 +117,13 @@ function initTracking() {
     // ══════════════════════════════════════════════════
     // 5. CLIC SUR LES FICHES DE SERVICES
     //    <a href="hernie-inguinale.html" class="service-card">
-    //    + circoncision, cryptorchidie, hypospadias...
     // ══════════════════════════════════════════════════
     document.querySelectorAll("a.service-card").forEach(function(el) {
         el.addEventListener("click", function() {
-            var href = el.getAttribute("href") || "";
-            var nom = href.replace(".html", "").replace(/-/g, " ");
-            // Récupère le titre h3 s'il existe
             var titre = el.querySelector("h3");
-            if (titre) nom = titre.textContent.trim();
+            var nom = titre
+                ? titre.textContent.trim()
+                : (el.getAttribute("href") || "").replace(".html", "").replace(/-/g, " ");
             trackEvent("click_service", {
                 event_category: "Services",
                 event_label: nom,
@@ -123,7 +134,7 @@ function initTracking() {
 
     // ══════════════════════════════════════════════════
     // 6. CLIC SUR LES ANNUAIRES MÉDICAUX
-    //    med.tn / algerie-docto / 1sante / annumed...
+    //    med.tn / algerie-docto / 1sante / annumed
     // ══════════════════════════════════════════════════
     document.querySelectorAll("a.annuaire-item").forEach(function(el) {
         el.addEventListener("click", function() {
@@ -152,7 +163,7 @@ function initTracking() {
     });
 
     // ══════════════════════════════════════════════════
-    // 8. NAVIGATION CARROUSEL (photos du cabinet)
+    // 8. NAVIGATION CARROUSEL PHOTOS
     //    <button id="prev-btn"> / <button id="next-btn">
     // ══════════════════════════════════════════════════
     var prevBtn = document.getElementById("prev-btn");
@@ -175,8 +186,8 @@ function initTracking() {
     }
 
     // ══════════════════════════════════════════════════
-    // 9. CLICS NAVIGATION INTERNE (#sections)
-    //    <nav class="nav-links"><a href="#services">...
+    // 9. NAVIGATION INTERNE (menu)
+    //    <nav class="nav-links"><a href="#services">
     // ══════════════════════════════════════════════════
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(el) {
         el.addEventListener("click", function() {
@@ -221,7 +232,6 @@ function initTracking() {
             });
         }, secs * 1000);
     });
-
 }
 
 // ── Bannière de consentement ────────────────────────────────────────────────
@@ -234,9 +244,7 @@ function createBanner() {
     banner.innerHTML = '\
         <div style="\
             position: fixed;\
-            bottom: 0;\
-            left: 0;\
-            right: 0;\
+            bottom: 0; left: 0; right: 0;\
             background: #1f2937;\
             color: white;\
             padding: 18px 24px;\
@@ -251,7 +259,7 @@ function createBanner() {
             font-size: 14px;\
             line-height: 1.5;\
         ">\
-            <div style="flex: 1; min-width: 220px;">\
+            <div style="flex:1; min-width:220px;">\
                 🍪 Ce site utilise des cookies pour mesurer l\'audience et améliorer votre expérience.\
                 <a href="/politique-confidentialite.html"\
                    style="color:#93c5fd; margin-left:6px; text-decoration:underline;">\
@@ -260,23 +268,15 @@ function createBanner() {
             </div>\
             <div style="display:flex; gap:10px; flex-shrink:0;">\
                 <button id="cookie-refuse" style="\
-                    padding: 9px 18px;\
-                    cursor: pointer;\
-                    background: transparent;\
-                    color: white;\
-                    border: 1px solid #6b7280;\
-                    border-radius: 6px;\
-                    font-size: 14px;\
+                    padding:9px 18px; cursor:pointer;\
+                    background:transparent; color:white;\
+                    border:1px solid #6b7280; border-radius:6px; font-size:14px;\
                 ">Refuser</button>\
                 <button id="cookie-accept" style="\
-                    padding: 9px 18px;\
-                    cursor: pointer;\
-                    background: #0d6efd;\
-                    color: white;\
-                    border: none;\
-                    border-radius: 6px;\
-                    font-size: 14px;\
-                    font-weight: 600;\
+                    padding:9px 18px; cursor:pointer;\
+                    background:#0d6efd; color:white;\
+                    border:none; border-radius:6px;\
+                    font-size:14px; font-weight:600;\
                 ">Accepter</button>\
             </div>\
         </div>\
@@ -287,14 +287,12 @@ function createBanner() {
     document.getElementById("cookie-accept").onclick = function() {
         setConsent("accepted");
         document.getElementById("cookie-banner").remove();
-        pushConsent(true);   // → signal GTM : consentement accordé
-        initTracking();      // → démarrer le tracking des clics
+        loadGA4(); // ← GA4 se charge ici, puis initTracking() est appelé dans onload
     };
 
     document.getElementById("cookie-refuse").onclick = function() {
         setConsent("refused");
         document.getElementById("cookie-banner").remove();
-        pushConsent(false);  // → signal GTM : consentement refusé
     };
 }
 
@@ -302,8 +300,7 @@ function createBanner() {
 
 document.addEventListener("DOMContentLoaded", function() {
     if (getConsent() === "accepted") {
-        pushConsent(true);   // informe GTM du consentement existant
-        initTracking();      // relance le tracking des clics
+        loadGA4(); // consentement déjà donné → charger GA4 et tracking
     }
-    createBanner();          // affiche la bannière si pas encore répondu
+    createBanner(); // afficher la bannière si pas encore répondu
 });
