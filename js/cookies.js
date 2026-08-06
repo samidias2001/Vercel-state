@@ -1,29 +1,14 @@
 // ==========================================
-// Gestion du consentement des cookies
 // Cabinet Dr Ziane Khodja
-// Version 6.0 — GA4 direct + GTM + RGPD
+// Version 7.0 — GA4 direct, sans bannière
 // ==========================================
 
-const COOKIE_NAME = "drzk_cookie_consent";
 const GA_ID = "G-S65YXQMJTX";
 
-// ── Lecture / écriture du consentement ──────────────────────────────────────
+// ── Chargement immédiat de GA4 ──────────────────────────────────────────────
 
-function getConsent() {
-    return localStorage.getItem(COOKIE_NAME);
-}
-
-function setConsent(value) {
-    localStorage.setItem(COOKIE_NAME, value);
-}
-
-// ── Chargement de GA4 (après consentement uniquement) ───────────────────────
-
-function loadGA4() {
-    if (window._ga4Loaded) return; // évite le double chargement
-    window._ga4Loaded = true;
-
-    const script = document.createElement("script");
+(function() {
+    var script = document.createElement("script");
     script.async = true;
     script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(script);
@@ -34,13 +19,11 @@ function loadGA4() {
         window.gtag = gtag;
         gtag("js", new Date());
         gtag("config", GA_ID, { send_page_view: true });
-
-        // GA4 chargé → lancer le tracking
         initTracking();
     };
-}
+})();
 
-// ── Fonction utilitaire d'envoi d'événement GA4 ─────────────────────────────
+// ── Fonction utilitaire d'envoi d'événement ─────────────────────────────────
 
 function trackEvent(eventName, params) {
     if (typeof window.gtag === "function") {
@@ -48,14 +31,11 @@ function trackEvent(eventName, params) {
     }
 }
 
-// ── Initialisation du tracking des clics ────────────────────────────────────
+// ── Tracking de tous les clics ──────────────────────────────────────────────
 
 function initTracking() {
 
-    // ══════════════════════════════════════════════════
-    // 1. CLIC SUR "APPELER"
-    //    <a class="btn btn-pink" href="tel:+213558456019">
-    // ══════════════════════════════════════════════════
+    // 1. APPELER
     document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
         el.addEventListener("click", function() {
             trackEvent("click_appeler", {
@@ -66,19 +46,12 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 2. CLIC SUR WHATSAPP
-    //    — Bouton hero  : href="https://wa.me/213558456019"
-    //    — Bouton footer: href="https://wa.me/213558456019"
-    //    — Bouton flottant .floating-wa
-    // ══════════════════════════════════════════════════
+    // 2. WHATSAPP (hero + footer + flottant)
     document.querySelectorAll('a[href*="wa.me"]').forEach(function(el) {
         el.addEventListener("click", function() {
             var label = el.classList.contains("floating-wa")
-                ? "Bouton flottant WhatsApp"
-                : el.closest("footer")
-                    ? "WhatsApp footer"
-                    : "WhatsApp hero";
+                ? "WhatsApp flottant"
+                : el.closest("footer") ? "WhatsApp footer" : "WhatsApp hero";
             trackEvent("click_whatsapp", {
                 event_category: "Contact",
                 event_label: label,
@@ -87,10 +60,7 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 3. CLIC SUR "LAISSER UN AVIS GOOGLE"
-    //    href="https://g.page/r/CQ0Vb5qpP6pZEBM/review"
-    // ══════════════════════════════════════════════════
+    // 3. AVIS GOOGLE
     document.querySelectorAll('a[href*="g.page/r"]').forEach(function(el) {
         el.addEventListener("click", function() {
             trackEvent("click_avis_google", {
@@ -101,29 +71,23 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 4. CLIC SUR FACEBOOK
-    //    href="https://www.facebook.com/share/18vtggVe7d/"
-    // ══════════════════════════════════════════════════
+    // 4. FACEBOOK
     document.querySelectorAll('a[href*="facebook.com"]').forEach(function(el) {
         el.addEventListener("click", function() {
             trackEvent("click_facebook", {
                 event_category: "Réseaux sociaux",
-                event_label: "Page Facebook Dr Ziane Khodja"
+                event_label: "Page Facebook"
             });
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 5. CLIC SUR LES FICHES DE SERVICES
-    //    <a href="hernie-inguinale.html" class="service-card">
-    // ══════════════════════════════════════════════════
+    // 5. FICHES SERVICES
     document.querySelectorAll("a.service-card").forEach(function(el) {
         el.addEventListener("click", function() {
             var titre = el.querySelector("h3");
             var nom = titre
                 ? titre.textContent.trim()
-                : (el.getAttribute("href") || "").replace(".html", "").replace(/-/g, " ");
+                : (el.getAttribute("href") || "").replace(".html","").replace(/-/g," ");
             trackEvent("click_service", {
                 event_category: "Services",
                 event_label: nom,
@@ -132,14 +96,11 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 6. CLIC SUR LES ANNUAIRES MÉDICAUX
-    //    med.tn / algerie-docto / 1sante / annumed
-    // ══════════════════════════════════════════════════
+    // 6. ANNUAIRES MÉDICAUX
     document.querySelectorAll("a.annuaire-item").forEach(function(el) {
         el.addEventListener("click", function() {
             var href = el.getAttribute("href") || "";
-            var domain = href.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
+            var domain = href.replace(/^https?:\/\/(www\.)?/,"").split("/")[0];
             trackEvent("click_annuaire", {
                 event_category: "Annuaires",
                 event_label: domain
@@ -147,31 +108,25 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 7. OUVERTURE DES QUESTIONS FAQ
-    //    <button class="faq-q">
-    // ══════════════════════════════════════════════════
+    // 7. FAQ
     document.querySelectorAll(".faq-q").forEach(function(btn) {
         btn.addEventListener("click", function() {
             var frSpan = btn.querySelector("span.fr");
             var question = frSpan ? frSpan.textContent.trim() : btn.textContent.trim();
             trackEvent("faq_ouverture", {
-                event_category: "Engagement FAQ",
+                event_category: "FAQ",
                 event_label: question
             });
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 8. NAVIGATION CARROUSEL PHOTOS
-    //    <button id="prev-btn"> / <button id="next-btn">
-    // ══════════════════════════════════════════════════
+    // 8. CARROUSEL PHOTOS
     var prevBtn = document.getElementById("prev-btn");
     var nextBtn = document.getElementById("next-btn");
     if (prevBtn) {
         prevBtn.addEventListener("click", function() {
             trackEvent("carousel_navigation", {
-                event_category: "Galerie Cabinet",
+                event_category: "Galerie",
                 event_label: "Photo précédente"
             });
         });
@@ -179,16 +134,13 @@ function initTracking() {
     if (nextBtn) {
         nextBtn.addEventListener("click", function() {
             trackEvent("carousel_navigation", {
-                event_category: "Galerie Cabinet",
+                event_category: "Galerie",
                 event_label: "Photo suivante"
             });
         });
     }
 
-    // ══════════════════════════════════════════════════
-    // 9. NAVIGATION INTERNE (menu)
-    //    <nav class="nav-links"><a href="#services">
-    // ══════════════════════════════════════════════════
+    // 9. NAVIGATION MENU
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(el) {
         el.addEventListener("click", function() {
             var frSpan = el.querySelector(".fr");
@@ -200,9 +152,7 @@ function initTracking() {
         });
     });
 
-    // ══════════════════════════════════════════════════
-    // 10. SCROLL DEPTH (25 / 50 / 75 / 100 %)
-    // ══════════════════════════════════════════════════
+    // 10. SCROLL DEPTH (25 / 50 / 75 / 100%)
     var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
     window.addEventListener("scroll", function() {
         var h = document.body.scrollHeight - window.innerHeight;
@@ -220,9 +170,7 @@ function initTracking() {
         });
     }, { passive: true });
 
-    // ══════════════════════════════════════════════════
-    // 11. TEMPS PASSÉ SUR LA PAGE (30s / 1min / 2min / 5min)
-    // ══════════════════════════════════════════════════
+    // 11. TEMPS SUR PAGE (30s / 1min / 2min / 5min)
     [30, 60, 120, 300].forEach(function(secs) {
         setTimeout(function() {
             trackEvent("temps_sur_page", {
@@ -233,74 +181,3 @@ function initTracking() {
         }, secs * 1000);
     });
 }
-
-// ── Bannière de consentement ────────────────────────────────────────────────
-
-function createBanner() {
-    if (getConsent()) return; // déjà répondu → pas de bannière
-
-    var banner = document.createElement("div");
-    banner.id = "cookie-banner";
-    banner.innerHTML = '\
-        <div style="\
-            position: fixed;\
-            bottom: 0; left: 0; right: 0;\
-            background: #1f2937;\
-            color: white;\
-            padding: 18px 24px;\
-            z-index: 99999;\
-            display: flex;\
-            justify-content: space-between;\
-            align-items: center;\
-            gap: 16px;\
-            flex-wrap: wrap;\
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);\
-            font-family: sans-serif;\
-            font-size: 14px;\
-            line-height: 1.5;\
-        ">\
-            <div style="flex:1; min-width:220px;">\
-                🍪 Ce site utilise des cookies pour mesurer l\'audience et améliorer votre expérience.\
-                <a href="/politique-confidentialite.html"\
-                   style="color:#93c5fd; margin-left:6px; text-decoration:underline;">\
-                   En savoir plus\
-                </a>\
-            </div>\
-            <div style="display:flex; gap:10px; flex-shrink:0;">\
-                <button id="cookie-refuse" style="\
-                    padding:9px 18px; cursor:pointer;\
-                    background:transparent; color:white;\
-                    border:1px solid #6b7280; border-radius:6px; font-size:14px;\
-                ">Refuser</button>\
-                <button id="cookie-accept" style="\
-                    padding:9px 18px; cursor:pointer;\
-                    background:#0d6efd; color:white;\
-                    border:none; border-radius:6px;\
-                    font-size:14px; font-weight:600;\
-                ">Accepter</button>\
-            </div>\
-        </div>\
-    ';
-
-    document.body.appendChild(banner);
-
-    document.getElementById("cookie-accept").onclick = function() {
-        setConsent("accepted");
-        document.getElementById("cookie-banner").remove();
-        loadGA4(); // ← GA4 se charge ici, puis initTracking() est appelé dans onload
-    };
-
-    document.getElementById("cookie-refuse").onclick = function() {
-        setConsent("refused");
-        document.getElementById("cookie-banner").remove();
-    };
-}
-
-// ── Initialisation ──────────────────────────────────────────────────────────
-
-document.addEventListener("DOMContentLoaded", function() {
-    if (getConsent() === "accepted") {
-        loadGA4(); // consentement déjà donné → charger GA4 et tracking
-    }
-    createBanner(); // afficher la bannière si pas encore répondu
-});
