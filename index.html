@@ -1994,9 +1994,9 @@ dotsNav.addEventListener('click', e => {
 
 // Toggle Langue (RTL / LTR)
 function toggleLang() {
-  localStorage.setItem('zk_lang_choice', '1');
   const body = document.body;
   const isAr = body.classList.contains('lang-ar');
+  localStorage.setItem('zk_lang_choice', isAr ? 'fr' : 'ar');   // ← nouvelle ligne ICI (remplace l'ancienne)
   if (isAr) {
     body.classList.remove('lang-ar');
     body.classList.add('lang-fr');
@@ -2008,7 +2008,6 @@ function toggleLang() {
     document.documentElement.setAttribute('lang', 'ar');
     document.documentElement.setAttribute('dir', 'rtl');
   }
-  // Recalculer la position du slider selon la direction
   updateSliderPosition();
 }
 
