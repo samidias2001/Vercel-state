@@ -1994,6 +1994,7 @@ dotsNav.addEventListener('click', e => {
 
 // Toggle Langue (RTL / LTR)
 function toggleLang() {
+  localStorage.setItem('zk_lang_choice', '1');
   const body = document.body;
   const isAr = body.classList.contains('lang-ar');
   if (isAr) {
@@ -2220,5 +2221,6 @@ function escapeHtml(str) {
 }
 </script>
 <script src="js/cookies.js"></script>
+<script src="js/lang-detect.js"></script>
 </body>
 </html>
