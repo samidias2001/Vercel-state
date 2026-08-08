@@ -111,7 +111,7 @@ body.lang-ar .fr{display:none}body.lang-ar .ar{display:block}body.lang-ar .links
 <header class="header"><div class="wrap nav">
 <a class="brand" href="index.html"><img src="1000040675.jpg" alt="Dr Ziane Khodja — Chirurgienne pédiatre"><div>Dr. Ziane Khodja<small>Chirurgienne pédiatre</small></div></a>
 <nav class="links"><a href="index.html">Accueil</a><a href="circoncision.html">Circoncision</a><a href="circoncision-boumerdes.html">Circoncision à Boumerdès</a><a href="chirurgie-pediatrique-boumerdes.html">Chirurgie pédiatrique</a><a href="#faq">FAQ</a></nav>
-<div style="display:flex;gap:12px;align-items:center"><button class="lang" onclick="document.body.classList.toggle('lang-ar')">العربية / FR</button><a class="btn btn-pink" href="https://wa.me/213558456019"><i class="fa-brands fa-whatsapp"></i><span class="fr">Rendez-vous</span><span class="ar">موعد</span></a></div>
+<div style="display:flex;gap:12px;align-items:center"><button class="lang" onclick="toggleLang()">العربية / FR</button><a class="btn btn-pink" href="https://wa.me/213558456019"><i class="fa-brands fa-whatsapp"></i><span class="fr">Rendez-vous</span><span class="ar">موعد</span></a></div>
 </div></header>
 
 <main>
@@ -291,6 +291,8 @@ body.lang-ar .fr{display:none}body.lang-ar .ar{display:block}body.lang-ar .links
     });
   });
 </script>
+<script>function toggleLang(){const body=document.body;const isAr=body.classList.contains("lang-ar");localStorage.setItem("zk_lang_choice", isAr ? "fr" : "ar");if(isAr){body.classList.remove("lang-ar");document.documentElement.setAttribute("lang","fr");document.documentElement.setAttribute("dir","ltr");}else{body.classList.add("lang-ar");document.documentElement.setAttribute("lang","ar");document.documentElement.setAttribute("dir","rtl");}}</script>
 <script src="js/cookies.js"></script>
+<script src="js/lang-detect.js"></script>
 </body>
 </html>

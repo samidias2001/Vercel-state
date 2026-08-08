@@ -618,6 +618,7 @@ body.lang-ar .timeline-step h4 { font-family: 'Tajawal', sans-serif; }
 <script>
 function toggleLang(){
   const body=document.body;const isAr=body.classList.contains('lang-ar');
+  localStorage.setItem('zk_lang_choice', isAr ? 'fr' : 'ar');
   if(isAr){body.classList.remove('lang-ar');body.classList.add('lang-fr');document.documentElement.setAttribute('lang','fr');document.documentElement.setAttribute('dir','ltr');}
   else{body.classList.remove('lang-fr');body.classList.add('lang-ar');document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}
 }
@@ -632,5 +633,6 @@ function toggleFaq(btn){
 }
 </script>
 <script src="js/cookies.js"></script>
+<script src="js/lang-detect.js"></script>
 </body>
 </html>
